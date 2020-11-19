@@ -23,68 +23,68 @@ class _HomePageState extends State<HomePage> {
       /**
        * Stack叠加布局相当于Android中的Fragment
        */
-    body: Stack(
+        body: Stack(
           children: [
-             /**
+            /**
              * MediaQuery.removePadding 用来一出顶部的Padding（规范刘海屏）
              */
             MediaQuery.removePadding(
               //MediaQuery必传参数
-                context: context,
-                //MediaQuery必传参数
-                removeTop: true,
-                /**
-                 *NotificationListener用来监听列表的滚动
-                 */
-                child: NotificationListener(
-                  onNotification: (notification) {
+              context: context,
+              //MediaQuery必传参数
+              removeTop: true,
+              /**
+               *NotificationListener用来监听列表的滚动
+               */
+              child: NotificationListener(
+                onNotification: (notification) {
+                  /**
+                   * notification is ScrollUpdateNotification 判断是否滑动
+                   *
+                   * notification.depth == 0 只监听第0个元素（防止Bunner，这里的意思是只监听ListView滑动)
+                   *
+                   */
+                  if (notification is ScrollUpdateNotification &&
+                      notification.depth == 0) {
                     /**
-                     * notification is ScrollUpdateNotification 判断是否滑动
+                     * notification.metrics.pixels 滑动像素
                      *
-                     * notification.depth == 0 只监听第0个元素（防止Bunner，这里的意思是只监听ListView滑动)
-                     *
+                     * 因为透明度只接受0和1  0完全透明  1完全不透明  所以/100
                      */
-                    if (notification is ScrollUpdateNotification &&
-                        notification.depth == 0) {
-                      /**
-                       * notification.metrics.pixels 滑动像素
-                       *
-                       * 因为透明度只接受0和1  0完全透明  1完全不透明  所以/100
-                       */
-                      double d = notification.metrics.pixels / 100.0;
-                      if (d < 0) {
-                        d = 0;
-                      } else if (d > 1) {
-                        d = 1;
-                      }
-                      setState(() {
-                        _mAlpha = d;
-                      });
+                    double d = notification.metrics.pixels / 100.0;
+                    if (d < 0) {
+                      d = 0;
+                    } else if (d > 1) {
+                      d = 1;
                     }
-                  },
-                  child: ListView(
-                    children: [
-                      /**
-                       * Bunner
-                       */
+                    setState(() {
+                      _mAlpha = d;
+                    });
+                  }
+                },
+                child: ListView(
+                  children: [
+                    /**
+                     * Bunner
+                     */
 
-                      initBanner(),
+                    initBanner(),
 
-                      Container(
-                        height: 400,
-                        color: Colors.yellow,
-                      ),
-                      Container(
-                        height: 400,
-                        color: Colors.red,
-                      ),
-                      Container(
-                        height: 400,
-                        color: Colors.yellow,
-                      )
-                    ],
-                  ),
+                    Container(
+                      height: 400,
+                      color: Colors.yellow,
+                    ),
+                    Container(
+                      height: 400,
+                      color: Colors.red,
+                    ),
+                    Container(
+                      height: 400,
+                      color: Colors.yellow,
+                    )
+                  ],
                 ),
+              ),
             ),
             Opacity(
               opacity: _mAlpha,
@@ -117,6 +117,12 @@ class _HomePageState extends State<HomePage> {
           );
         },
         //添加轮播图指示器
+        /**
+         * DotSwiperPaginationBuilder() 左上角显示圆点
+         * FractionPaginationBuilder() 左上角显示数字
+         * SwiperPagination()           居中小圆点
+         *
+         */
         pagination: SwiperPagination(),
       ),
     );
