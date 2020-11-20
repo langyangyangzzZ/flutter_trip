@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_trip/flare_demo/flare_sign_in_demo.dart';
 import 'package:flutter_trip/home_pages/home_page.dart';
 import 'package:flutter_trip/home_pages/my_page.dart';
-import 'package:flutter_trip/home_pages/search_page.dart';
+import 'package:flutter_trip/home_pages/searchPage.dart';
 import 'package:flutter_trip/home_pages/trip_page.dart';
+import 'package:flutter_trip/tests/network_request_test.dart';
 
 void main() {
   runApp(FlareDemo());
@@ -44,6 +45,7 @@ class _MainPageState extends State<MainPage> {
               SearchPage(),
               TripPage(),
               MyPage(),
+              NetworkRequestTest(),
             ],
             //当打开页面显示第0个位置
             controller: _pageController = new PageController(initialPage: 0),
@@ -67,6 +69,9 @@ class _MainPageState extends State<MainPage> {
           //将文本展示出来
           type: BottomNavigationBarType.fixed,
           items: [
+            /**
+             * 首页
+             */
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: "首页",
@@ -76,7 +81,11 @@ class _MainPageState extends State<MainPage> {
                 color: Colors.blue,
               ),
             ),
+            /**
+             * 搜索
+             */
             BottomNavigationBarItem(
+
               icon: Icon(Icons.search),
               label: "搜索",
               activeIcon: Icon(
@@ -84,6 +93,9 @@ class _MainPageState extends State<MainPage> {
                 color: Colors.blue,
               ),
             ),
+            /**
+             * 旅拍
+             */
             BottomNavigationBarItem(
               icon: Icon(Icons.camera_alt),
               label: "旅拍",
@@ -92,11 +104,25 @@ class _MainPageState extends State<MainPage> {
                 color: Colors.blue,
               ),
             ),
+            /**
+             * 我的
+             */
             BottomNavigationBarItem(
               icon: Icon(Icons.android),
               label: "我的",
               activeIcon: Icon(
                 Icons.android,
+                color: Colors.blue,
+              ),
+            ),
+            /**
+             * test测试
+             */
+            BottomNavigationBarItem(
+              icon: Icon(Icons.text_fields_sharp),
+              label: "测试",
+              activeIcon: Icon(
+                Icons.text_fields_sharp,
                 color: Colors.blue,
               ),
             ),

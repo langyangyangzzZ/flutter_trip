@@ -33,6 +33,7 @@ dependencies:
   smart_flare: any      #熊猫登录页插件
   http: ^0.12.2         #Http网络请求插件
   dio: ^3.0.10        # 网络请求插件
+  shared_preferences: ^0.5.12+4 #存储工具  https://pub.dev/packages/shared_preferences/install
 
 dev_dependencies:
   flutter_test:

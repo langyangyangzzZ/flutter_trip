@@ -1,32 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_trip/beans/chicken_soup_bean.dart';
+import 'package:flutter_trip/tests/shared_perferences_test.dart';
+import 'package:flutter_trip/util/sp_util.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class SearchPage extends StatefulWidget {
+class NetworkRequestTest extends StatefulWidget {
   @override
-  _SearchPageState createState() => _SearchPageState();
+  _NetworkRequestTestState createState() => _NetworkRequestTestState();
 }
 
-class _SearchPageState extends State<SearchPage> {
+class _NetworkRequestTestState extends State<NetworkRequestTest> {
   String _mValue = "";
   var _httpGet;
+
   @override
   void initState() {
-    _httpGet= _HttpGet();
+    _httpGet = _HttpGet();
   }
+
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       appBar: AppBar(
         title: (Text("搜索")),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          setState(() {
-
-          });
+          setState(() {});
         },
         child: Text("刷新"),
       ),
@@ -65,6 +70,10 @@ class _SearchPageState extends State<SearchPage> {
               )
             ],
           )),
+
+          /**
+           * FutureBuilder
+           */
           FutureBuilder<ChickenSoupBean>(
             //异步请求的接口
             future: _HttpGet(),
@@ -86,6 +95,11 @@ class _SearchPageState extends State<SearchPage> {
               }
             },
           ),
+
+          /**
+           * Test测试类
+           */
+          SPTest()
         ],
       ),
     );
@@ -95,12 +109,13 @@ class _SearchPageState extends State<SearchPage> {
    *   异步请求网络数据
    */
   Future<ChickenSoupBean> _HttpGet() async {
-      var   responce =  await http.get("https://v1.hitokoto.cn/");
+    var responce = await http.get("https://v1.hitokoto.cn/");
     //UTF-8防止乱码
     Utf8Codec utf8codec = Utf8Codec();
     //序列化返回数据
     final decode = json.decode(utf8codec.decode(responce.bodyBytes));
-   return  ChickenSoupBean.fromJson(decode);
-
+    return ChickenSoupBean.fromJson(decode);
   }
+
+
 }
