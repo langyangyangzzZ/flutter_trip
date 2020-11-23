@@ -4,7 +4,7 @@ import 'package:flutter_trip/home_pages/home_page.dart';
 import 'package:flutter_trip/home_pages/my_page.dart';
 import 'package:flutter_trip/home_pages/searchPage.dart';
 import 'package:flutter_trip/home_pages/trip_page.dart';
-import 'package:flutter_trip/tests/network_request_test.dart';
+import 'file:///D:/FlutterProject/flutter_trip/lib/home_pages/network_request_test.dart';
 
 void main() {
   runApp(FlareDemo());
