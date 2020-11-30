@@ -310,12 +310,13 @@ class MyCustomPaint extends CustomPainter {
 
       element.postion = Offset(dx, dy);
 
-      _paint.color = element.color;
 
     });
 
     //绘制
     _list.forEach((element) {
+      _paint.color = element.color;
+
       canvas.drawCircle(element.postion, element.radio, _paint);
     });
   }
