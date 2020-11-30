@@ -2,12 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_trip/flare_demo/flare_sign_in_demo.dart';
 import 'package:flutter_trip/home_pages/home_page.dart';
 import 'package:flutter_trip/home_pages/my_page.dart';
+import 'package:flutter_trip/home_pages/network_request_test.dart';
 import 'package:flutter_trip/home_pages/searchPage.dart';
 import 'package:flutter_trip/home_pages/trip_page.dart';
-import 'file:///D:/FlutterProject/flutter_trip/lib/home_pages/network_request_test.dart';
+import 'package:flutter_trip/snowflake_landing_page.dart';
 
 void main() {
-  runApp(FlareDemo());
+  runApp(MaterialApp(
+    //取消debug标志
+    debugShowCheckedModeBanner: false,
+    //气泡动画
+    home: Snowflake_landing_Page(),
+
+    //小熊动画
+    // home: FlareDemo(),
+  ));
 }
 
 class MainApp extends StatelessWidget {

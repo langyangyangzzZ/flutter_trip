@@ -1,5 +1,7 @@
 name: flutter_trip
+#description: A new Flutter module.
 description: A new Flutter application.
+
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -81,3 +83,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+#  module:
+#    androidX: true
+#    androidPackage: demo.ht.com.androidproject
+#    iosBundleIdentifier: demo.ht.com.androidproject

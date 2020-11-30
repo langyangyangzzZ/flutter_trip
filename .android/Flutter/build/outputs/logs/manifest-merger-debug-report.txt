@@ -1,0 +1,59 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml:2:1-16:12
+INJECTED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml:2:1-16:12
+INJECTED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml:2:1-16:12
+INJECTED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml:2:1-16:12
+INJECTED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml:2:1-16:12
+INJECTED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml:2:1-16:12
+INJECTED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml:2:1-16:12
+	package
+		ADDED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml:3:5-41
+		INJECTED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml
+		INJECTED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml
+		ADDED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml:2:1-16:12
+		INJECTED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml
+	xmlns:tools
+		ADDED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml:4:5-51
+	android:versionCode
+		INJECTED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml
+		ADDED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml:2:1-16:12
+		INJECTED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml:5:3-64
+	android:name
+		ADDED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml:5:20-62
+application
+ADDED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml:6:3-15:17
+	tools:node
+		ADDED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml:6:16-34
+meta-data#flutterProjectType
+ADDED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml:7:5-9:32
+	android:value
+		ADDED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml:9:7-29
+	android:name
+		ADDED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml:8:7-40
+meta-data#flutterEmbedding
+ADDED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml:12:7-14:31
+	android:value
+		ADDED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml:14:11-28
+	android:name
+		ADDED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml:13:11-42
+uses-sdk
+INJECTED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml
+INJECTED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml
+INJECTED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml
+INJECTED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml
+		ADDED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml
+		INJECTED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml
+		ADDED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml
+		INJECTED from D:\FlutterProject\flutter_trip\.android\Flutter\src\main\AndroidManifest.xml

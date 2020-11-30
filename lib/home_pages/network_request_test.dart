@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_trip/beans/chicken_soup_bean.dart';
 import 'package:flutter_trip/tests/http_test.dart';
+import 'package:flutter_trip/tests/listview_test.dart';
 import 'package:flutter_trip/tests/shared_perferences_test.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -35,29 +36,21 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
           /**
            * Http页面
            */
-          RaisedButton(
-            child: Text("Http页面"),
-            onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (BuildContext context) {
-                return Http_Test();
-              }));
-            },
-          ),
+          initRpute("Http页面",Http_Test()),
 
-          RaisedButton(
-            child: Text("SP页面"),
-            onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (BuildContext context) {
-                return  SPTest();
-              }));
-            },
-
-          ),
           /**
-           * Test测试类
+           * Sp页面
            */
+          initRpute("Http页面",SPTest()),
+
+          /**
+           * ListVIew页面
+           */
+          initRpute("ListView页面",ListView_Test()),
+
+
+
+
 
         ],
       ),
@@ -74,5 +67,17 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
     //序列化返回数据
     final decode = json.decode(utf8codec.decode(responce.bodyBytes));
     return ChickenSoupBean.fromJson(decode);
+  }
+
+  initRpute(String title, Widget http_test) {
+    return RaisedButton(
+      child: Text(title),
+      onPressed: () {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (BuildContext context) {
+          return http_test;
+        }));
+      },
+    );
   }
 }
