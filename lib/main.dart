@@ -5,17 +5,17 @@ import 'package:flutter_trip/home_pages/my_page.dart';
 import 'package:flutter_trip/home_pages/network_request_test.dart';
 import 'package:flutter_trip/home_pages/searchPage.dart';
 import 'package:flutter_trip/home_pages/trip_page.dart';
-import 'package:flutter_trip/snowflake_landing_page.dart';
+import 'file:///D:/FlutterProject/flutter_trip/lib/tests/snowflake_landing_text.dart';
 
 void main() {
   runApp(MaterialApp(
     //取消debug标志
     debugShowCheckedModeBanner: false,
     //气泡动画
-    home: Snowflake_landing_Page(),
+    // home: Snowflake_landing_Page(),
 
     //小熊动画
-    // home: FlareDemo(),
+    home: FlareDemo(),
   ));
 }
 

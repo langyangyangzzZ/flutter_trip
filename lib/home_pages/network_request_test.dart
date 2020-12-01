@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_trip/beans/chicken_soup_bean.dart';
+import 'file:///D:/FlutterProject/flutter_trip/lib/tests/snowflake_landing_text.dart';
 import 'package:flutter_trip/tests/http_test.dart';
 import 'package:flutter_trip/tests/listview_test.dart';
 import 'package:flutter_trip/tests/shared_perferences_test.dart';
+import 'package:flutter_trip/tests/snowflake_test.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
@@ -36,20 +38,25 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
           /**
            * Http页面
            */
-          initRpute("Http页面",Http_Test()),
+          initPage("Http页面",Http_Test()),
 
           /**
            * Sp页面
            */
-          initRpute("Http页面",SPTest()),
+          initPage("Http页面",SPTest()),
 
           /**
            * ListVIew页面
            */
-          initRpute("ListView页面",ListView_Test()),
-
-
-
+          initPage("ListView页面",ListView_Test()),
+          /**
+           *气泡登录页
+           */
+          initPage("气泡登录页",Snowflake_landing_Page()),
+          /**
+           *
+           */
+          initPage("气泡登录页",SnowflakePage()),
 
 
         ],
@@ -69,7 +76,7 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
     return ChickenSoupBean.fromJson(decode);
   }
 
-  initRpute(String title, Widget http_test) {
+  initPage(String title, Widget http_test) {
     return RaisedButton(
       child: Text(title),
       onPressed: () {
