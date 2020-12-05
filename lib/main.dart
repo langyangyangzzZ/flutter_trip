@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_trip/flare_demo/flare_sign_in_demo.dart';
 import 'package:flutter_trip/home_pages/home_page.dart';
 import 'package:flutter_trip/home_pages/my_page.dart';
 import 'package:flutter_trip/home_pages/network_request_test.dart';
 import 'package:flutter_trip/home_pages/searchPage.dart';
 import 'package:flutter_trip/home_pages/trip_page.dart';
-import 'file:///D:/FlutterProject/flutter_trip/lib/tests/snowflake_landing_text.dart';
 
 void main() {
+  //改变状态栏颜色为透明
+  // SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(statusBarColor:Colors.transparent);
+  // SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   runApp(MaterialApp(
+
     //取消debug标志
     debugShowCheckedModeBanner: false,
     //气泡动画

@@ -38,31 +38,51 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
           /**
            * Http页面
            */
-          initPage("Http页面",Http_Test()),
+          initPage("Http页面", Http_Test()),
 
           /**
            * Sp页面
            */
-          initPage("Http页面",SPTest()),
+          initPage("Http页面", SPTest()),
 
           /**
            * ListVIew页面
            */
-          initPage("ListView页面",ListView_Test()),
+          initPage("ListView页面", ListView_Test()),
           /**
            *气泡登录页
            */
-          initPage("气泡登录页",Snowflake_landing_Page()),
+          initPage("气泡登录页", Snowflake_landing_Page()),
           /**
            *
            */
-          initPage("气泡登录页",SnowflakePage()),
+          initPage("气泡登录页", SnowflakePage()),
+          InkWell(
+            child: Container(
+              margin: EdgeInsets.only(left: 30),
+              child: Text(
+                "Key测试",
+                textAlign: TextAlign.center,
+              ),
+            ),
+            key: _keyGreen,
+            onTap: () {
+              //获取当前Widget大小
+              final RenderBox renderBox = _keyGreen.currentContext.findRenderObject();
+              final sizeGreen = renderBox.size;
+              print("SIZEofgreen: $sizeGreen");
 
-
+              //获取当前屏幕位置
+              final positionGreen = renderBox.localToGlobal(Offset.zero);
+              print("POSITIONofgreen: $positionGreen");
+            },
+          )
         ],
       ),
     );
   }
+
+  GlobalKey _keyGreen = GlobalKey();
 
   /**
    *   异步请求网络数据
