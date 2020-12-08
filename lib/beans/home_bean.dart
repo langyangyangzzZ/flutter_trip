@@ -92,7 +92,9 @@ class HomeBean {
 
 /// icon : "https://www.devio.org/io/flutter_app/img/sales_box_huodong.png"
 /// moreUrl : "https://contents.ctrip.com/activitysetupapp/mkt/index/moreact"
-/// bigCard1 : {"icon":"https://dimg04.c-ctrip.com/images/700t0y000000m71h523FE_375_260_342.png","url":"https://contents.ctrip.com/buildingblocksweb/special/membershipcard/index.html?sceneid=1&productid=14912&ishidenavbar=yes&pushcode=act_svip_hm31","title":"活动"}
+/// bigCard1 : {"icon":"https://dimg04.c-ctrip.com/images/700t0y000000m71h523FE_375_260_342.png",
+/// "url":"https://contents.ctrip.com/buildingblocksweb/special/membershipcard/index.html?sceneid=1&productid=14912&ishidenavbar=yes&pushcode=act_svip_hm31",
+/// "title":"活动"}
 /// bigCard2 : {"icon":"https://dimg04.c-ctrip.com/images/700a10000000portu2BAD_375_260_342.jpg","url":"https://m.ctrip.com/webapp/you/livestream/plan/crhHotelList.html?liveAwaken=true&isHideHeader=true&isHideNavBar=YES&mktcrhcode=hotevent","title":"活动"}
 /// smallCard1 : {"icon":"https://dimg04.c-ctrip.com/images/700b0z000000neoth8688_375_160_345.jpg","url":"https://contents.ctrip.com/activitysetupapp/mkt/index/nbaafs?pushcode=IP_nbaafs004","title":"活动"}
 /// smallCard2 : {"icon":"https://dimg04.c-ctrip.com/images/700w0z000000mogkyEF78_375_160_345.jpg","url":"https://smarket.ctrip.com/webapp/promocode/add?source=5","title":"活动"}
@@ -103,30 +105,30 @@ class SalesBox {
   String _icon;
   String _moreUrl;
   BigCard1 _bigCard1;
-  BigCard2 _bigCard2;
+  BigCard1 _bigCard2;
   SmallCard1 _smallCard1;
-  SmallCard2 _smallCard2;
-  SmallCard3 _smallCard3;
-  SmallCard4 _smallCard4;
+  SmallCard1 _smallCard2;
+  SmallCard1 _smallCard3;
+  SmallCard1 _smallCard4;
 
   String get icon => _icon;
   String get moreUrl => _moreUrl;
   BigCard1 get bigCard1 => _bigCard1;
-  BigCard2 get bigCard2 => _bigCard2;
+  BigCard1 get bigCard2 => _bigCard2;
   SmallCard1 get smallCard1 => _smallCard1;
-  SmallCard2 get smallCard2 => _smallCard2;
-  SmallCard3 get smallCard3 => _smallCard3;
-  SmallCard4 get smallCard4 => _smallCard4;
+  SmallCard1 get smallCard2 => _smallCard2;
+  SmallCard1 get smallCard3 => _smallCard3;
+  SmallCard1 get smallCard4 => _smallCard4;
 
   SalesBox({
       String icon, 
       String moreUrl, 
-      BigCard1 bigCard1, 
-      BigCard2 bigCard2, 
-      SmallCard1 smallCard1, 
-      SmallCard2 smallCard2, 
-      SmallCard3 smallCard3, 
-      SmallCard4 smallCard4}){
+      BigCard1 bigCard1,
+    BigCard1 bigCard2,
+      SmallCard1 smallCard1,
+    SmallCard1 smallCard2,
+    SmallCard1 smallCard3,
+    SmallCard1 smallCard4}){
     _icon = icon;
     _moreUrl = moreUrl;
     _bigCard1 = bigCard1;
@@ -141,11 +143,11 @@ class SalesBox {
     _icon = json["icon"];
     _moreUrl = json["moreUrl"];
     _bigCard1 = json["bigCard1"] != null ? BigCard1.fromJson(json["bigCard1"]) : null;
-    _bigCard2 = json["bigCard2"] != null ? BigCard2.fromJson(json["bigCard2"]) : null;
+    _bigCard2 = json["bigCard2"] != null ? BigCard1.fromJson(json["bigCard2"]) : null;
     _smallCard1 = json["smallCard1"] != null ? SmallCard1.fromJson(json["smallCard1"]) : null;
-    _smallCard2 = json["smallCard2"] != null ? SmallCard2.fromJson(json["smallCard2"]) : null;
-    _smallCard3 = json["smallCard3"] != null ? SmallCard3.fromJson(json["smallCard3"]) : null;
-    _smallCard4 = json["smallCard4"] != null ? SmallCard4.fromJson(json["smallCard4"]) : null;
+    _smallCard2 = json["smallCard2"] != null ? SmallCard1.fromJson(json["smallCard2"]) : null;
+    _smallCard3 = json["smallCard3"] != null ? SmallCard1.fromJson(json["smallCard3"]) : null;
+    _smallCard4 = json["smallCard4"] != null ? SmallCard1.fromJson(json["smallCard4"]) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -175,119 +177,7 @@ class SalesBox {
 
 }
 
-/// icon : "https://dimg04.c-ctrip.com/images/700d0s000000htvwo16C4_375_160_345.jpg"
-/// url : "https://smarket.ctrip.com/webapp/promocode/add?source=5"
-/// title : "活动"
 
-class SmallCard4 {
-  String _icon;
-  String _url;
-  String _title;
-
-  String get icon => _icon;
-  String get url => _url;
-  String get title => _title;
-
-  SmallCard4({
-      String icon, 
-      String url, 
-      String title}){
-    _icon = icon;
-    _url = url;
-    _title = title;
-}
-
-  SmallCard4.fromJson(dynamic json) {
-    _icon = json["icon"];
-    _url = json["url"];
-    _title = json["title"];
-  }
-
-  Map<String, dynamic> toJson() {
-    var map = <String, dynamic>{};
-    map["icon"] = _icon;
-    map["url"] = _url;
-    map["title"] = _title;
-    return map;
-  }
-
-}
-
-/// icon : "https://dimg04.c-ctrip.com/images/700a0t000000im512AB2C_375_160_345.jpg"
-/// url : "https://smarket.ctrip.com/webapp/promocode/add?source=5"
-/// title : "活动"
-
-class SmallCard3 {
-  String _icon;
-  String _url;
-  String _title;
-
-  String get icon => _icon;
-  String get url => _url;
-  String get title => _title;
-
-  SmallCard3({
-      String icon, 
-      String url, 
-      String title}){
-    _icon = icon;
-    _url = url;
-    _title = title;
-}
-
-  SmallCard3.fromJson(dynamic json) {
-    _icon = json["icon"];
-    _url = json["url"];
-    _title = json["title"];
-  }
-
-  Map<String, dynamic> toJson() {
-    var map = <String, dynamic>{};
-    map["icon"] = _icon;
-    map["url"] = _url;
-    map["title"] = _title;
-    return map;
-  }
-
-}
-
-/// icon : "https://dimg04.c-ctrip.com/images/700w0z000000mogkyEF78_375_160_345.jpg"
-/// url : "https://smarket.ctrip.com/webapp/promocode/add?source=5"
-/// title : "活动"
-
-class SmallCard2 {
-  String _icon;
-  String _url;
-  String _title;
-
-  String get icon => _icon;
-  String get url => _url;
-  String get title => _title;
-
-  SmallCard2({
-      String icon, 
-      String url, 
-      String title}){
-    _icon = icon;
-    _url = url;
-    _title = title;
-}
-
-  SmallCard2.fromJson(dynamic json) {
-    _icon = json["icon"];
-    _url = json["url"];
-    _title = json["title"];
-  }
-
-  Map<String, dynamic> toJson() {
-    var map = <String, dynamic>{};
-    map["icon"] = _icon;
-    map["url"] = _url;
-    map["title"] = _title;
-    return map;
-  }
-
-}
 
 /// icon : "https://dimg04.c-ctrip.com/images/700b0z000000neoth8688_375_160_345.jpg"
 /// url : "https://contents.ctrip.com/activitysetupapp/mkt/index/nbaafs?pushcode=IP_nbaafs004"
@@ -454,12 +344,12 @@ class SubNavList {
 
 class GridNav {
   Hotel _hotel;
-  Flight _flight;
-  Travel _travel;
+  Hotel _flight;
+  Hotel _travel;
 
   Hotel get hotel => _hotel;
-  Flight get flight => _flight;
-  Travel get travel => _travel;
+  Hotel get flight => _flight;
+  Hotel get travel => _travel;
 
 
   @override
@@ -468,9 +358,9 @@ class GridNav {
   }
 
   GridNav({
-      Hotel hotel, 
-      Flight flight, 
-      Travel travel}){
+      Hotel hotel,
+    Hotel flight,
+    Hotel travel}){
     _hotel = hotel;
     _flight = flight;
     _travel = travel;
@@ -478,8 +368,8 @@ class GridNav {
 
   GridNav.fromJson(dynamic json) {
     _hotel = json["hotel"] != null ? Hotel.fromJson(json["hotel"]) : null;
-    _flight = json["flight"] != null ? Flight.fromJson(json["flight"]) : null;
-    _travel = json["travel"] != null ? Travel.fromJson(json["travel"]) : null;
+    _flight = json["flight"] != null ? Hotel.fromJson(json["flight"]) : null;
+    _travel = json["travel"] != null ? Hotel.fromJson(json["travel"]) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -506,7 +396,7 @@ class GridNav {
 /// item3 : {"title":"邮轮旅行","url":"https://m.ctrip.com/webapp/cruise/index","hideAppBar":true}
 /// item4 : {"title":"定制旅行","url":"https://m.ctrip.com/webapp/dingzhi","hideAppBar":true}
 
-class Travel {
+class Travel  {
   String _startColor;
   String _endColor;
   MainItem _mainItem;
@@ -876,6 +766,7 @@ class Flight {
 /// item2 : {"title":"特价酒店","url":"https://m.ctrip.com/webapp/hotel/hotsale"}
 /// item3 : {"title":"团购","url":"https://m.ctrip.com/webapp/tuan/?secondwakeup=true&dpclickjump=true","hideAppBar":true}
 /// item4 : {"title":"民宿 客栈","url":"https://m.ctrip.com/webapp/inn/index","hideAppBar":true}
+
 
 class Hotel {
   String _startColor;

@@ -37,6 +37,7 @@ dependencies:
   dio: ^3.0.10        # 网络请求插件
   shared_preferences: ^0.5.12+4 #存储工具  https://pub.dev/packages/shared_preferences/install
   flutter_webview_plugin: ^0.3.11 #WebView跳转到浏览器页面 与H5混合开发   https://pub.dev/packages/flutter_webview_plugin/install
+  m_loading: ^0.0.1 #loading弹框提示
 
 dev_dependencies:
   flutter_test:

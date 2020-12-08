@@ -13,8 +13,6 @@ void main() {
   // SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   runApp(MaterialApp(
 
-    //取消debug标志
-    debugShowCheckedModeBanner: false,
     //气泡动画
     // home: Snowflake_landing_Page(),
 

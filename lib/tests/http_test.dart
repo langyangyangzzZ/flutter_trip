@@ -22,7 +22,7 @@ class _Http_TestState extends State<Http_Test> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            InkWell(
+            GestureDetector(
               onTap: () {
                 Future.delayed(new Duration(seconds: 2)).then((value) {
                   print("Future.delayed:我是老大,但我在两秒之后执行的");

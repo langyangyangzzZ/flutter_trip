@@ -31,18 +31,25 @@ class _ListView_TestState extends State<ListView_Test> {
         body: RefreshIndicator(
             onRefresh: initRefresh,
             child: Container(
-              child: ListView(
+              child: GridView(
                 //滑动方向
                 scrollDirection: Axis.vertical,
                 //子Widget
                 children: initItem(),
                 //反转 最好是占盘全屏使用
-                reverse: true,
+                // reverse: true,
                 shrinkWrap: true,
                 //垂直时显示的子Widget高度 水平时显示的子Widget宽度
-                itemExtent: 100,
+                // itemExtent: 100,
                 //ListView边距
-                padding: EdgeInsets.all(20),
+                padding: EdgeInsets.all(20), gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                //单个子Widget的水平最大宽度
+                  maxCrossAxisExtent: MediaQuery.of(context).size.width / 6,
+                  //水平单个子Widget之间间距
+                  mainAxisSpacing: 20.0,
+                  //垂直单个子Widget之间间距
+                  crossAxisSpacing: 10.0
+              ),
               ),
 
             )));

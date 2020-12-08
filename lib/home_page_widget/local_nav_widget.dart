@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_trip/beans/home_bean.dart';
+import 'package:flutter_trip/util/loading_util.dart';
 import 'package:flutter_trip/util/toast.dart';
 import 'package:flutter_trip/web_views/local_nav_web_widget.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 class LocalNavWidget extends StatelessWidget {
   final List<LocalNavList> localNavList;
@@ -36,7 +36,7 @@ class LocalNavWidget extends StatelessWidget {
   }
 
   Widget item2(LocalNavList element, BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
