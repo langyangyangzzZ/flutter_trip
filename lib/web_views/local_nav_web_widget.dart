@@ -111,8 +111,6 @@ class _LocalNavWebWidgetState extends State<LocalNavWebWidget> {
                   top: MediaQueryData.fromWindow(window).padding.top),
               child: WillPopScope(
                 onWillPop: () {
-                  LogUtil.Log(tagging: "H5页面",title: "onWillPop");
-                  Toast.toast(context,msg: "已返回主页面");
                   Navigator.of(context).pop();
                 },
                 child: WebviewScaffold(
