@@ -8,6 +8,7 @@ import 'package:flutter_trip/home_page_widget/sales_box_widget.dart';
 import 'package:flutter_trip/home_page_widget/sub_nav_widget.dart';
 import 'package:flutter_trip/util/loading_util.dart';
 import 'package:flutter_trip/util/log_util.dart';
+import 'package:flutter_trip/web_views/local_nav_web_widget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -30,6 +31,32 @@ class _HomePageState extends State<HomePage> {
   //底部卡片布局
   SalesBox _salesBox ;
   double _mAlpha = 0;
+
+  Widget get buildListView {
+   return ListView(
+      children: [
+        ///Bunnear
+        initBanner(),
+
+        //攻略景点  周边游 等
+        LocalNavWidget(
+          localNavList: _localNavList,
+        ),
+
+        //卡片布局
+        GridNavWidget(
+          gridNav: _gridNav,
+        ),
+
+        //Wifi电话卡布局
+        SubNavWidget(_subNavList),
+
+        //底部卡片布局
+        SalesBoxWidget(_salesBox),
+
+      ],
+    );
+  }
 
   @override
   void initState() {
@@ -71,7 +98,9 @@ class _HomePageState extends State<HomePage> {
               /**
                *NotificationListener用来监听列表的滚动
                */
-              child: NotificationListener(
+              child: RefreshIndicator(
+                onRefresh: initData,
+                child: NotificationListener(
                 onNotification: (notification) {
                   /**
                    * notification is ScrollUpdateNotification 判断是否滑动
@@ -98,29 +127,9 @@ class _HomePageState extends State<HomePage> {
                   }
                   return;
                 },
-                child: ListView(
-                  children: [
-                    ///Bunnear
-                    initBanner(),
+                child: buildListView,
+              ),
 
-                    //攻略景点  周边游 等
-                    LocalNavWidget(
-                      localNavList: _localNavList,
-                    ),
-
-                    //卡片布局
-                    GridNavWidget(
-                      gridNav: _gridNav,
-                    ),
-
-                    //Wifi电话卡布局
-                    SubNavWidget(_subNavList),
-
-                    //底部卡片布局
-                    SalesBoxWidget(_salesBox),
-
-                  ],
-                ),
               ),
             ),
             Opacity(
@@ -142,6 +151,14 @@ class _HomePageState extends State<HomePage> {
       height: 200,
       //使用插件  flutter_swiper: ^1.1.6
       child: Swiper(
+
+        onTap: (index){
+        Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) {
+          return LocalNavWebWidget(_bannerList[index].url,"");
+        }));
+
+      },
+
         //播放图片长度
         itemCount: _bannerList.length,
         //自动播放
@@ -168,7 +185,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  initData() async {
+  Future<Null> initData() async {
     var dao = new Dao();
     await dao.home_data().then((value) {
       //设置Banner数据
@@ -183,6 +200,8 @@ class _HomePageState extends State<HomePage> {
     }).catchError((e) {
       print("首页数据有误:$e");
     });
+
+    return null;
   }
 
   item(int element) {

@@ -12,7 +12,7 @@ class SpUtil {
     SharedPreferences instance = await SharedPreferences.getInstance();
     switch (T) {
       case String:
-        print("SpUtilsetData:T:${T}\t-- key:${key}");
+        print("SpUtilsetData:T:${T}\t-- key:$key");
         instance.setString(key, value as String);
         break;
       case int:
@@ -36,7 +36,7 @@ class SpUtil {
     var t;
     switch (T) {
       case String:
-        print("SpUtilgetData:T:${T}\t-- key:${key}");
+        print("SpUtilgetData:T:${T}\t-- key:$key");
        t = await instance.getString(key);
         break;
       case int:

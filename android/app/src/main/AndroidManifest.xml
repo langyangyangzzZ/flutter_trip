@@ -1,6 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flutter_trip">
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
 
+    <!--    外部存储权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    
     <application
         android:label="flutter_trip"
         android:icon="@mipmap/ic_launcher">

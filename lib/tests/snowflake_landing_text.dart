@@ -40,7 +40,6 @@ class _Snowflake_landing_PageState extends State<Snowflake_landing_Page>
   @override
   void initState() {
     // TODO: implement initState
-    super.initState();
     /**
      * 循环得到30个气泡
      */
@@ -75,9 +74,11 @@ class _Snowflake_landing_PageState extends State<Snowflake_landing_Page>
 
     //动画监听器
     _animationController.addListener(() {
-      setState(() {
+      setState(() {});
+    });
 
-      });
+    _animationController.addStatusListener((status) {
+
     });
     //渐变动画
     _tweenAnimation =
@@ -91,6 +92,9 @@ class _Snowflake_landing_PageState extends State<Snowflake_landing_Page>
     });
     //渐变动画开启
     _tweenAnimation.forward();
+
+
+    super.initState();
   }
 
   @override
@@ -98,10 +102,8 @@ class _Snowflake_landing_PageState extends State<Snowflake_landing_Page>
     // TODO: implement dispose
     super.dispose();
     _animationController.dispose();
-    _animationController = null;
 
     _tweenAnimation.dispose();
-    _tweenAnimation = null;
   }
 
   @override
@@ -289,7 +291,6 @@ class MyCustomPaint extends CustomPainter {
      //重新根据速度与运动角度计算Offset
       Offset newOffset = coordinates(element.speed, element.theta);
 
-      print("szjpaintdx${newOffset.dx}paintdy${newOffset.dy}");
       double dx = newOffset.dx + element.postion.dx;
       double dy = newOffset.dy + element.postion.dy;
 

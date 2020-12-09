@@ -96,6 +96,8 @@ class SalesBoxWidget extends StatelessWidget {
       child: Image.network(
         smallCard.icon,
         fit: BoxFit.fill,
+        width: MediaQuery.of(context).size.width / 2 - 5,
+        height: 100,
       ),
     );
   }
