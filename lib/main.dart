@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_trip/flare_demo/flare_sign_in_demo.dart';
 import 'package:flutter_trip/home_pages/home_page.dart';
 import 'package:flutter_trip/home_pages/my_page.dart';
 import 'package:flutter_trip/home_pages/network_request_test.dart';
@@ -7,7 +8,6 @@ import 'package:flutter_trip/home_pages/searchPage.dart';
 import 'package:flutter_trip/home_pages/trip_page.dart';
 import 'package:flutter_trip/tests/snowflake_landing_text.dart';
 import 'package:flutter_trip/util/permission_util.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 void main() {
   //改变状态栏颜色为透明
@@ -19,6 +19,9 @@ void main() {
     debugShowCheckedModeBanner: false,
     //小熊动画
     // home: FlareDemo(),
+    routes: <String,WidgetBuilder>{
+      "snowflake_landing_page" :(BuildContext context) => Snowflake_landing_Page(),
+    },
   ));
 }
 

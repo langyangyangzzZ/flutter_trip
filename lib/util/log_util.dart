@@ -6,7 +6,7 @@ class LogUtil{
 
   static Log({String tagging,String title}){
     if(isDeBug){
-      print("$tagging 为: ${title}");
+      print("${tagging??"LogUtil:"} 为: ${title??""}");
     }
   }
 }

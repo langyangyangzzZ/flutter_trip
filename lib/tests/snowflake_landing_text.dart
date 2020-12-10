@@ -2,9 +2,10 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_trip/main.dart';
 import 'package:flutter_trip/util/gallery_unit.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_trip/util/toast.dart';
 
 class Snowflake_landing_Page extends StatefulWidget {
   @override
@@ -39,47 +40,21 @@ class _Snowflake_landing_PageState extends State<Snowflake_landing_Page>
 
   @override
   void initState() {
-    // TODO: implement initState
-    /**
-     * 循环得到30个气泡
-     */
-    for (int i = 0; i < 30; i++) {
-      BubbleBean bubbleBean = new BubbleBean();
-
-      //获取随机透明度
-      bubbleBean.color = getRandomColor(_random);
-
-      //初始化设置位置
-      bubbleBean.postion = Offset(-1, -1);
-
-      /**
-       *  _random.nextDouble() 获取的是0-1之间不为负数的小数
-       */
-
-      //设置随机运动
-      bubbleBean.speed = _random.nextDouble() * _maxSpeed;
-
-      //设置随机半径
-      bubbleBean.radio = _random.nextDouble() * _maxRadius;
-
-      //随机的角度
-      bubbleBean.theta = _random.nextDouble() * _maxTheta;
-
-      _list.add(bubbleBean);
-    }
+    super.initState();
 
     //创建动画,执行为1秒
     _animationController =
-        new AnimationController(vsync: this, duration: Duration(seconds: 1));
+        new AnimationController(vsync: this, duration: Duration(seconds: 5));
+      //动画监听器
+      _animationController.addListener(() {
+        if (mounted)
+        setState(() {});
+      });
 
-    //动画监听器
-    _animationController.addListener(() {
-      setState(() {});
-    });
+      _animationController.addStatusListener((status) {
+        setState(() {});
+      });
 
-    _animationController.addStatusListener((status) {
-
-    });
     //渐变动画
     _tweenAnimation =
         new AnimationController(vsync: this, duration: Duration(seconds: 1));
@@ -93,17 +68,19 @@ class _Snowflake_landing_PageState extends State<Snowflake_landing_Page>
     //渐变动画开启
     _tweenAnimation.forward();
 
-
-    super.initState();
+    //初始化数据
+    initData();
   }
 
   @override
   void dispose() {
     // TODO: implement dispose
-    super.dispose();
     _animationController.dispose();
 
     _tweenAnimation.dispose();
+
+
+    super.dispose();
   }
 
   @override
@@ -135,15 +112,15 @@ class _Snowflake_landing_PageState extends State<Snowflake_landing_Page>
   buildGradientBackground() {
     return Container(
       decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topRight,  //LinearGradient属性
-              end: Alignment.bottomLeft,  //属性
-              colors: [
-                Colors.blue.withOpacity(0.3),
-                Colors.blueAccent.withOpacity(0.3),
-                Colors.lightBlueAccent.withOpacity(0.3),
-                Colors.lightBlue.withOpacity(0.3),
-              ]),
+        gradient: LinearGradient(
+            begin: Alignment.topRight, //LinearGradient属性
+            end: Alignment.bottomLeft, //属性
+            colors: [
+              Colors.blue.withOpacity(0.3),
+              Colors.blueAccent.withOpacity(0.3),
+              Colors.lightBlueAccent.withOpacity(0.3),
+              Colors.lightBlue.withOpacity(0.3),
+            ]),
       ),
     );
   }
@@ -208,10 +185,7 @@ class _Snowflake_landing_PageState extends State<Snowflake_landing_Page>
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (BuildContext context) {
-                    return GalleryUnit();
-                  }));
+                  Toast.toast(context, msg: "注册");
                 },
                 child: Text("注册", textAlign: TextAlign.center),
               ),
@@ -225,10 +199,14 @@ class _Snowflake_landing_PageState extends State<Snowflake_landing_Page>
               child: ElevatedButton(
                 onPressed: () {
                   //跳转页面并吧当前状态取消掉
-                  Navigator.pushAndRemoveUntil(context,
-                      new MaterialPageRoute(builder: (BuildContext context) {
-                    return MainPage();
-                  }), (route) => route == null);
+                  //跳转并关闭当前页面
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    new MaterialPageRoute(
+                      builder: (context) => new MainPage(),
+                    ),
+                    (route) => route == null,
+                  );
                 },
                 child: Text("登录", textAlign: TextAlign.center),
               ),
@@ -237,6 +215,38 @@ class _Snowflake_landing_PageState extends State<Snowflake_landing_Page>
         ),
       ),
     );
+  }
+
+  //初始化数据
+  Future<Null> initData() async {
+    /**
+     * 循环得到30个气泡
+     */
+    for (int i = 0; i < 30; i++) {
+      BubbleBean bubbleBean = new BubbleBean();
+
+      //获取随机透明度
+      bubbleBean.color = getRandomColor(_random);
+
+      //初始化设置位置
+      bubbleBean.postion = Offset(-1, -1);
+
+      /**
+       *  _random.nextDouble() 获取的是0-1之间不为负数的小数
+       */
+
+      //设置随机运动
+      bubbleBean.speed = _random.nextDouble() * _maxSpeed;
+
+      //设置随机半径
+      bubbleBean.radio = _random.nextDouble() * _maxRadius;
+
+      //随机的角度
+      bubbleBean.theta = _random.nextDouble() * _maxTheta;
+
+      await _list.add(bubbleBean);
+    }
+    return null;
   }
 }
 
@@ -275,26 +285,25 @@ class MyTextField extends StatelessWidget {
 }
 
 class MyCustomPaint extends CustomPainter {
-
   Paint _paint = new Paint()
-  //设置锯齿
+    //设置锯齿
     ..isAntiAlias = true;
 
   List<BubbleBean> _list;
   Random _random;
+
   MyCustomPaint(this._list, this._random);
 
   @override
   void paint(Canvas canvas, Size size) {
-
-   _list.forEach((element) {
-     //重新根据速度与运动角度计算Offset
+    _list.forEach((element) {
+      //重新根据速度与运动角度计算Offset
       Offset newOffset = coordinates(element.speed, element.theta);
 
       double dx = newOffset.dx + element.postion.dx;
       double dy = newOffset.dy + element.postion.dy;
 
-     /**
+      /**
        * 通过if判断  保证dx坐标在屏幕里面
        */
       if (dx < 0 || dx > size.width) {
@@ -302,16 +311,13 @@ class MyCustomPaint extends CustomPainter {
         dx = _random.nextDouble() * size.width;
       }
 
-
-       /*通过if判断  保证dy坐标在屏幕里面*/
+      /*通过if判断  保证dy坐标在屏幕里面*/
       if (dy < 0 || dy > size.height) {
         //_random.nextDouble() 生成的是0-1之间不为负数的小数    size.height是屏幕的高
         dy = _random.nextDouble() * size.height;
       }
 
       element.postion = Offset(dx, dy);
-
-
     });
 
     //绘制
