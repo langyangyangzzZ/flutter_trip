@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_trip/beans/chicken_soup_bean.dart';
 import 'file:///D:/FlutterProject/flutter_trip/lib/tests/snowflake_landing_text.dart';
 import 'package:flutter_trip/tests/http_test.dart';
-import 'package:flutter_trip/tests/listview_test.dart';
+import 'package:flutter_trip/tests/gridview_test.dart';
 import 'package:flutter_trip/tests/shared_perferences_test.dart';
 import 'package:flutter_trip/tests/snowflake_test.dart';
 import 'dart:convert';
@@ -48,7 +48,7 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
           /**
            * ListVIew页面
            */
-          initPage("ListView页面", ListView_Test()),
+          initPage("ListView页面", GridView_Test()),
           /**
            *气泡登录页
            */

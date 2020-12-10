@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_trip/tests/open_container_text.dart';
 import 'package:flutter_trip/util/log_util.dart';
 
-class ListView_Test extends StatefulWidget {
+class GridView_Test extends StatefulWidget {
   @override
-  _ListView_TestState createState() => _ListView_TestState();
+  _GridView_TestState createState() => _GridView_TestState();
 }
 
-class _ListView_TestState extends State<ListView_Test> {
+class _GridView_TestState extends State<GridView_Test> {
   List _mListCity = [];
   ScrollController scrollController = new ScrollController();
 
