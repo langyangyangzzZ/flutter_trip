@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_trip/beans/chicken_soup_bean.dart';
+import 'package:flutter_trip/tests/a_test.dart';
 import 'file:///D:/FlutterProject/flutter_trip/lib/tests/snowflake_landing_text.dart';
 import 'package:flutter_trip/tests/http_test.dart';
 import 'package:flutter_trip/tests/gridview_test.dart';
+import 'package:flutter_trip/tests/listview_text.dart';
 import 'package:flutter_trip/tests/shared_perferences_test.dart';
 import 'package:flutter_trip/tests/snowflake_test.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 
 class NetworkRequestTest extends StatefulWidget {
   @override
@@ -14,11 +13,9 @@ class NetworkRequestTest extends StatefulWidget {
 }
 
 class _NetworkRequestTestState extends State<NetworkRequestTest> {
-  var _httpGet;
-
   @override
   void initState() {
-    _httpGet = _HttpGet();
+    super.initState();
   }
 
   @override
@@ -48,7 +45,7 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
           /**
            * ListVIew页面
            */
-          initPage("ListView页面", GridView_Test()),
+          initPage("GradView页面", GridView_Test()),
           /**
            *气泡登录页
            */
@@ -57,26 +54,17 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
            *
            */
           initPage("气泡登录页", SnowflakePage()),
-          InkWell(
-            child: Container(
-              margin: EdgeInsets.only(left: 30),
-              child: Text(
-                "Key测试",
-                textAlign: TextAlign.center,
-              ),
-            ),
-            key: _keyGreen,
-            onTap: () {
-              //获取当前Widget大小
-              final RenderBox renderBox = _keyGreen.currentContext.findRenderObject();
-              final sizeGreen = renderBox.size;
-              print("SIZEofgreen: $sizeGreen");
 
-              //获取当前屏幕位置
-              final positionGreen = renderBox.localToGlobal(Offset.zero);
-              print("POSITIONofgreen: $positionGreen");
-            },
-          )
+          /**
+           * Key测试
+           */
+          initKeyText(),
+          /**
+           * ListView
+           */
+          initPage("ListView", ListViewTextWidget()),
+
+          initPage("测试NavigatorUtil", AText()),
         ],
       ),
     );
@@ -84,26 +72,38 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
 
   GlobalKey _keyGreen = GlobalKey();
 
-  /**
-   *   异步请求网络数据
-   */
-  Future<ChickenSoupBean> _HttpGet() async {
-    var responce = await http.get("https://v1.hitokoto.cn/");
-    //UTF-8防止乱码
-    Utf8Codec utf8codec = Utf8Codec();
-    //序列化返回数据
-    final decode = json.decode(utf8codec.decode(responce.bodyBytes));
-    return ChickenSoupBean.fromJson(decode);
-  }
-
-  initPage(String title, Widget http_test) {
+  initPage(String title, Widget httpTest) {
     return RaisedButton(
       child: Text(title),
       onPressed: () {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (BuildContext context) {
-          return http_test;
+          return httpTest;
         }));
+      },
+    );
+  }
+
+  /// 获取当前Wiget位置 获取当前Wiget在屏幕中的位置
+  Widget initKeyText() {
+    return InkWell(
+      child: Container(
+        margin: EdgeInsets.only(left: 30),
+        child: Text(
+          "Key测试",
+          textAlign: TextAlign.center,
+        ),
+      ),
+      key: _keyGreen,
+      onTap: () {
+        //获取当前Widget大小
+        final RenderBox renderBox = _keyGreen.currentContext.findRenderObject();
+        final sizeGreen = renderBox.size;
+        print("SIZEofgreen: $sizeGreen");
+
+        //获取当前屏幕位置
+        final positionGreen = renderBox.localToGlobal(Offset.zero);
+        print("POSITIONofgreen: $positionGreen");
       },
     );
   }
