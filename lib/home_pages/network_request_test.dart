@@ -4,6 +4,7 @@ import 'file:///D:/FlutterProject/flutter_trip/lib/tests/snowflake_landing_text.
 import 'package:flutter_trip/tests/http_test.dart';
 import 'package:flutter_trip/tests/gridview_test.dart';
 import 'package:flutter_trip/tests/listview_text.dart';
+import 'package:flutter_trip/tests/rich_text.dart';
 import 'package:flutter_trip/tests/shared_perferences_test.dart';
 import 'package:flutter_trip/tests/snowflake_test.dart';
 
@@ -64,7 +65,16 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
            */
           initPage("ListView", ListViewTextWidget()),
 
+          /**
+           * 测试NavigatorUtil
+           */
           initPage("测试NavigatorUtil", AText()),
+
+          /**
+           * 富文本页面
+           */
+          initPage("富文本测试",RichTextWidget()),
+
         ],
       ),
     );
