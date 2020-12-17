@@ -40,6 +40,7 @@ dependencies:
   m_loading: ^0.0.1 #loading弹框提示   https://pub.dev/packages/m_loading/install
   permission_handler: ^5.0.1+1  #权限申请   https://pub.dev/packages/permission_handler/install
   animations: ^1.1.2 #Material Design 设计风格中的容器转换过渡   https://pub.dev/packages/animations/install
+  video_player: ^1.0.1 # 视屏播放   https://pub.dev/packages/video_player/install
 
 dev_dependencies:
   flutter_test:
@@ -62,6 +63,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
      - assets/Teddy.flr
+     - assets/video/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

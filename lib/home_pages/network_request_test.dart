@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_trip/main.dart';
 import 'package:flutter_trip/tests/a_test.dart';
 import 'file:///D:/FlutterProject/flutter_trip/lib/tests/snowflake_landing_text.dart';
 import 'package:flutter_trip/tests/http_test.dart';
@@ -7,6 +8,9 @@ import 'package:flutter_trip/tests/listview_text.dart';
 import 'package:flutter_trip/tests/rich_text.dart';
 import 'package:flutter_trip/tests/shared_perferences_test.dart';
 import 'package:flutter_trip/tests/snowflake_test.dart';
+import 'package:flutter_trip/tests/video_offical_text.dart';
+import 'package:flutter_trip/tests/video_page_widget.dart';
+import 'package:flutter_trip/tests/video_player_text.dart';
 
 class NetworkRequestTest extends StatefulWidget {
   @override
@@ -73,8 +77,26 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
           /**
            * 富文本页面
            */
-          initPage("富文本测试",RichTextWidget()),
+          initPage("富文本测试", RichTextWidget()),
+          /**
+           * 本地视屏播放页面
+           */
+          initPage(
+              "本地视频播放", VideoPageWidget(url: 'assets/video/kfc.mp4', time: 5, widget: MainPage(),)),
 
+          /**
+           * 网络视频播放页面
+           */
+          initPage(
+              "网络视频播放",
+              VideoPageWidget(
+                url:
+                    'https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4',widget: MainPage(),
+                time: 10,
+                type: VideoPageEnum.network,
+              )),
+
+          initPage("Video官方效果", VideoApp())
         ],
       ),
     );
