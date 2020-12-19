@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_trip/tests/video_page_widget.dart';
 import 'package:video_player/video_player.dart';
 
+/// 1217
+/// szj
+/// 公众号:码上变有钱
+/// 微信号:ohhzzZ77
+/// CSDN:https://blog.csdn.net/weixin_44819566
+/// video_player: ^1.0.1 # 视屏播放   https://pub.dev/packages/video_player/install
 class VideoPlayerWidget extends StatefulWidget {
   String url;
 
@@ -35,13 +41,15 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
   // _controller.play();
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        width: double.infinity,
-        height: double.infinity,
-        child: AspectRatio(
-          aspectRatio: _controller.value.aspectRatio,
-          child: VideoPlayer(_controller),
-        ));
+    return Container(
+      child: SizedBox(
+          width: double.infinity,
+          height: double.infinity,
+          child: AspectRatio(
+            aspectRatio: _controller.value.aspectRatio,
+            child: VideoPlayer(_controller),
+          )),
+    );
   }
 
   @override

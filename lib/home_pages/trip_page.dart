@@ -10,10 +10,8 @@ class TripPage extends StatefulWidget {
 class _TripPageState extends State<TripPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text("旅拍"),
-      ),
+    return Center(
+      child: Text("旅拍"),
     );
   }
 }

@@ -6,6 +6,13 @@ import 'package:flutter_trip/util/log_util.dart';
 import 'package:flutter_trip/util/navigator_util.dart';
 import 'package:flutter_trip/util/toast.dart';
 
+
+/// 1217
+/// szj
+/// 公众号:码上变有钱
+/// 微信号:ohhzzZ77
+/// CSDN:https://blog.csdn.net/weixin_44819566
+/// video_player: ^1.0.1 # 视屏播放   https://pub.dev/packages/video_player/install
 class VideoPageWidget extends StatefulWidget {
   String url;
   int time; //默认5s
@@ -39,15 +46,15 @@ class _VideoPageWidgetState extends State<VideoPageWidget> {
     super.initState();
     //1s执行一下
     _timer = Timer.periodic(new Duration(seconds: 1), (value) {
-      if (widget.time == 1) {
-        //关闭
-        _timer.cancel();
-        Toast.toast(context, msg: "已跳转");
-        goHome();
-      }
-      widget.time--;
-      setState(() {});
-      print("time: ${widget.time},value:$value");
+      // if (widget.time == 1) {
+      //   //关闭
+      //   _timer.cancel();
+      //   Toast.toast(context, msg: "已跳转");
+      //   goHome();
+      // }
+      // widget.time--;
+      // setState(() {});
+      // print("time: ${widget.time},value:$value");
     });
   }
 
@@ -71,22 +78,22 @@ class _VideoPageWidgetState extends State<VideoPageWidget> {
           //视屏播放
           VideoPlayerWidget(url: widget.url, type: widget.type),
 
+          //右上角跳转
           Positioned(
             child: GestureDetector(
                 onTap: () {
-                goHome();
+                  goHome();
                 },
                 child: buildContainer(context)),
             right: 20,
             top: 40,
           ),
-
-          //右上角跳转
         ],
       ),
     );
   }
 
+  //倒计时按钮布局
   Widget buildContainer(BuildContext context) {
     return Container(
       width: 100,
@@ -107,14 +114,15 @@ class _VideoPageWidgetState extends State<VideoPageWidget> {
 
   void goHome() {
     NavigatorUtil.pushColsePage(
-        context: context, widget: widget.widget, );
+      context: context,
+      widget: widget.widget,
+    );
   }
 }
 
 enum VideoPageEnum {
   //本地视频 通过assets下的video引用
   asset,
-
   // 网络 视频
   network
 }

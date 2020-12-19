@@ -4,7 +4,7 @@ import 'package:flutter_trip/flare_demo/flare_sign_in_demo.dart';
 import 'package:flutter_trip/home_pages/home_page.dart';
 import 'package:flutter_trip/home_pages/my_page.dart';
 import 'package:flutter_trip/home_pages/network_request_test.dart';
-import 'package:flutter_trip/home_pages/searchPage.dart';
+import 'package:flutter_trip/home_pages/video_page.dart';
 import 'package:flutter_trip/home_pages/trip_page.dart';
 import 'package:flutter_trip/tests/snowflake_landing_text.dart';
 import 'package:flutter_trip/util/permission_util.dart';
@@ -86,7 +86,7 @@ class _MainPageState extends State<MainPage>  with WidgetsBindingObserver {
         child: PageView(
           children: [
             HomePage(),
-            SearchPage(),
+            VideoPage(),
             TripPage(),
             MyPage(),
             NetworkRequestTest(),
@@ -126,13 +126,13 @@ class _MainPageState extends State<MainPage>  with WidgetsBindingObserver {
             ),
           ),
           /**
-           * 搜索
+           * 视频
            */
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: "搜索",
+            icon: Icon(Icons.video_call),
+            label: "视频",
             activeIcon: Icon(
-              Icons.search,
+              Icons.video_call,
               color: Colors.blue,
             ),
           ),
