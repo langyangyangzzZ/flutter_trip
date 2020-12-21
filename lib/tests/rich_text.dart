@@ -4,12 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_trip/util/navigator_util.dart';
-import 'package:flutter_trip/util/toast.dart';
 import 'package:flutter_trip/web_views/local_nav_web_widget.dart';
 
-/**
- * 富文本页面
- */
+/// 富文本页面
 class RichTextWidget extends StatefulWidget {
   @override
   _RichTextWidgetState createState() => _RichTextWidgetState();
@@ -18,18 +15,18 @@ class RichTextWidget extends StatefulWidget {
 class _RichTextWidgetState extends State<RichTextWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body:  Center(
+        child: ElevatedButton(
+          onPressed:  showDialog,
+          child: Text("富文本按钮"),
+        ),
+      ),
+    );
   }
 
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(new Duration(seconds: 0), () {
-      showDialog();
-    });
-  }
 
-  void showDialog() {
+   showDialog() {
     showCupertinoDialog(
       //必传上下文
       context: context,
@@ -64,6 +61,8 @@ class _RichTextWidgetState extends State<RichTextWidget> {
   TapGestureRecognizer _tgr1 = new TapGestureRecognizer();
   TapGestureRecognizer _tgr2 = new TapGestureRecognizer();
 
+  double _fontsize = 16;
+
   Widget buildContent(BuildContext context) {
     return Container(
       height: 200,
@@ -76,23 +75,26 @@ class _RichTextWidgetState extends State<RichTextWidget> {
             //TextOverflow.clip  减掉溢出文本
             //TextOverflow.fade  将溢出的文本淡入透明。
             overflow: TextOverflow.fade,
-            // //设置最大行数
+
+             //设置最大行数
             // maxLines: 5,
+
             // //对齐属性
-            textAlign: TextAlign.right,
+            // textAlign: TextAlign.right,
+
             // //文字放大缩小倍数，默认为1.0
-            textScaleFactor: 2,
-            textDirection: TextDirection.rtl,
+            // textScaleFactor: 2,
+            // textDirection: TextDirection.rtl,
             //必传文本
             text: new TextSpan(
                 text: "请认真阅读并理解",
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(color: Colors.grey, fontSize: _fontsize),
                 //手势监听
                 // recognizer: ,
                 children: [
                   TextSpan(
                       text: "<用户协议>",
-                      style: TextStyle(color: Colors.blueAccent),
+                      style: TextStyle(color: Colors.blueAccent, fontSize: _fontsize),
                       recognizer: _tgr1
                         ..onTap = () {
                           NavigatorUtil.pushPage(
@@ -103,11 +105,11 @@ class _RichTextWidgetState extends State<RichTextWidget> {
                         }),
                   TextSpan(
                     text: "与",
-                    style: TextStyle(color: Colors.grey),
+                    style: TextStyle(color: Colors.grey, fontSize:_fontsize),
                   ),
                   TextSpan(
                       text: "<隐私协议>",
-                      style: TextStyle(color: Colors.blueAccent),
+                      style: TextStyle(color: Colors.blueAccent, fontSize: _fontsize),
                       recognizer: _tgr2
                         ..onTap = () {
                           NavigatorUtil.pushPage(

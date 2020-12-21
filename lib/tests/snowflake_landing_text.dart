@@ -42,6 +42,8 @@ class _Snowflake_landing_PageState extends State<Snowflake_landing_Page>
   void initState() {
     super.initState();
 
+
+
     //创建动画,执行为1秒
     _animationController =
         new AnimationController(vsync: this, duration: Duration(seconds: 5));
