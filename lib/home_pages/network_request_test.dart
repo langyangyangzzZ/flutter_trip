@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_trip/main.dart';
 import 'package:flutter_trip/tests/a_test.dart';
+import 'package:flutter_trip/tests/animation_text.dart';
 import 'file:///D:/FlutterProject/flutter_trip/lib/tests/snowflake_landing_text.dart';
 import 'package:flutter_trip/tests/http_test.dart';
 import 'package:flutter_trip/tests/gridview_test.dart';
@@ -96,7 +97,12 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
                 type: VideoPageEnum.network,
               )),
 
-          initPage("Video官方效果", VideoApp())
+          initPage("Video官方效果", VideoApp()),
+
+          /***
+           * Animated动画
+           */
+          initPage("Animated动画", AnimationTextWidget()),
         ],
       ),
     );

@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_trip/flare_demo/flare_sign_in_demo.dart';
 import 'package:flutter_trip/home_pages/home_page.dart';
 import 'package:flutter_trip/home_pages/my_page.dart';
 import 'package:flutter_trip/home_pages/network_request_test.dart';
@@ -32,7 +30,7 @@ class MainApp extends StatelessWidget {
   }
 }
 
-/**
+/***
  * 主页面
  */
 class MainPage extends StatefulWidget{
