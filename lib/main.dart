@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_trip/home_page_widget/user_agreement_model.dart';
 import 'package:flutter_trip/home_pages/home_page.dart';
 import 'package:flutter_trip/home_pages/my_page.dart';
 import 'package:flutter_trip/home_pages/network_request_test.dart';
@@ -40,7 +41,8 @@ class MainPage extends StatefulWidget {
   _MainPageState createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
+class _MainPageState extends State<MainPage>
+    with WidgetsBindingObserver, UserAgreementModel {
   int _currentIndex = 0; //记录当前按钮位置
   PageController _pageController; //PageView控制器
 
@@ -55,28 +57,21 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
 
     //权限申请 和 用户协议
     initData();
-
   }
 
-  void initData()async{
+  void initData() async {
     _permissionUtil = new PermissionUtil(context);
 
     //检查权限
     _permissionUtil.checkPermission();
 
     Future.delayed(Duration.zero, () {
-    SpUtil.getDate<bool>("isUserAgreement").then((value) {
-      if (value == null || !value) {
-        //用户协议
-        //   NavigatorUtil.pushPageByFade(
-        //     context: context,
-        //     isOpaque: true,
-        //     widget: RichTextWidget(),
-        //     isReplace: true,
-        //   );
-      }
+      SpUtil.getDate<bool>("isUserAgreement").then((value) {
+        if (value == null || !value) {
+          showUserAgreementModelDialog(context);
+        }
+      });
     });
-  });
   }
 
   @override

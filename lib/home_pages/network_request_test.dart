@@ -8,6 +8,7 @@ import 'package:flutter_trip/tests/gridview_test.dart';
 import 'package:flutter_trip/tests/listview_text.dart';
 import 'package:flutter_trip/tests/rich_text.dart';
 import 'package:flutter_trip/tests/shared_perferences_test.dart';
+import 'package:flutter_trip/tests/slider_text.dart';
 import 'package:flutter_trip/tests/snowflake_test.dart';
 import 'package:flutter_trip/tests/video_offical_text.dart';
 import 'package:flutter_trip/tests/video_page_widget.dart';
@@ -103,6 +104,8 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
            * Animated动画
            */
           initPage("Animated动画", AnimationTextWidget()),
+
+          initPage("滑动条",SliderTextWidget()),
         ],
       ),
     );
