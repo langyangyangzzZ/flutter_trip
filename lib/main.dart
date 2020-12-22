@@ -4,8 +4,11 @@ import 'package:flutter_trip/home_pages/my_page.dart';
 import 'package:flutter_trip/home_pages/network_request_test.dart';
 import 'package:flutter_trip/home_pages/video_page.dart';
 import 'package:flutter_trip/home_pages/trip_page.dart';
+import 'package:flutter_trip/tests/rich_text.dart';
 import 'package:flutter_trip/tests/snowflake_landing_text.dart';
+import 'package:flutter_trip/util/navigator_util.dart';
 import 'package:flutter_trip/util/permission_util.dart';
+import 'package:flutter_trip/util/sp_util.dart';
 
 void main() {
   //改变状态栏颜色为透明
@@ -17,8 +20,9 @@ void main() {
     debugShowCheckedModeBanner: false,
     //小熊动画
     // home: FlareDemo(),
-    routes: <String,WidgetBuilder>{
-      "snowflake_landing_page" :(BuildContext context) => Snowflake_landing_Page(),
+    routes: <String, WidgetBuilder>{
+      "snowflake_landing_page": (BuildContext context) =>
+          Snowflake_landing_Page(),
     },
   ));
 }
@@ -30,15 +34,13 @@ class MainApp extends StatelessWidget {
   }
 }
 
-/***
- * 主页面
- */
-class MainPage extends StatefulWidget{
+/// 主页面
+class MainPage extends StatefulWidget {
   @override
   _MainPageState createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage>  with WidgetsBindingObserver {
+class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
   int _currentIndex = 0; //记录当前按钮位置
   PageController _pageController; //PageView控制器
 
@@ -51,10 +53,30 @@ class _MainPageState extends State<MainPage>  with WidgetsBindingObserver {
     //用来观察应用切换状态
     WidgetsBinding.instance.addObserver(this);
 
+    //权限申请 和 用户协议
+    initData();
+
+  }
+
+  void initData()async{
     _permissionUtil = new PermissionUtil(context);
 
+    //检查权限
     _permissionUtil.checkPermission();
 
+    Future.delayed(Duration.zero, () {
+    SpUtil.getDate<bool>("isUserAgreement").then((value) {
+      if (value == null || !value) {
+        //用户协议
+        //   NavigatorUtil.pushPageByFade(
+        //     context: context,
+        //     isOpaque: true,
+        //     widget: RichTextWidget(),
+        //     isReplace: true,
+        //   );
+      }
+    });
+  });
   }
 
   @override
@@ -71,11 +93,10 @@ class _MainPageState extends State<MainPage>  with WidgetsBindingObserver {
     super.didChangeAppLifecycleState(state);
 
     //当引用程序返回,并且当前是去的应用市场,则重新调用权限检测判断
-    if(state == AppLifecycleState.resumed && _permissionUtil.isGoAppSetteng){
+    if (state == AppLifecycleState.resumed && _permissionUtil.isGoAppSetteng) {
       _permissionUtil.checkPermission();
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -171,6 +192,4 @@ class _MainPageState extends State<MainPage>  with WidgetsBindingObserver {
       ),
     );
   }
-
-
 }

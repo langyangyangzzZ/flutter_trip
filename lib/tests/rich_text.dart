@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_trip/util/navigator_util.dart';
+import 'package:flutter_trip/util/sp_util.dart';
 import 'package:flutter_trip/web_views/local_nav_web_widget.dart';
 
 /// 富文本页面
@@ -14,19 +15,23 @@ class RichTextWidget extends StatefulWidget {
 
 class _RichTextWidgetState extends State<RichTextWidget> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+     showDialog();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:  Center(
-        child: ElevatedButton(
-          onPressed:  showDialog,
-          child: Text("富文本按钮"),
-        ),
+      backgroundColor: Colors.transparent,
+      body: Container(
+        color: Colors.white,
       ),
     );
   }
 
-
-   showDialog() {
+  void showDialog() {
     showCupertinoDialog(
       //必传上下文
       context: context,
@@ -39,12 +44,15 @@ class _RichTextWidgetState extends State<RichTextWidget> {
             CupertinoDialogAction(
               child: Text("取消"),
               onPressed: () {
+                SpUtil.setData<bool>("isUserAgreement", false);
                 Navigator.of(context).pop();
               },
             ),
             CupertinoDialogAction(
               child: Text("确定"),
               onPressed: () {
+                //存储变量,当存储为true时,第二次打开不弹出用户协议框
+                SpUtil.setData<bool>("isUserAgreement", true);
                 Navigator.of(context).pop();
               },
             ),
@@ -76,7 +84,7 @@ class _RichTextWidgetState extends State<RichTextWidget> {
             //TextOverflow.fade  将溢出的文本淡入透明。
             overflow: TextOverflow.fade,
 
-             //设置最大行数
+            //设置最大行数
             // maxLines: 5,
 
             // //对齐属性
@@ -94,7 +102,8 @@ class _RichTextWidgetState extends State<RichTextWidget> {
                 children: [
                   TextSpan(
                       text: "<用户协议>",
-                      style: TextStyle(color: Colors.blueAccent, fontSize: _fontsize),
+                      style: TextStyle(
+                          color: Colors.blueAccent, fontSize: _fontsize),
                       recognizer: _tgr1
                         ..onTap = () {
                           NavigatorUtil.pushPage(
@@ -105,11 +114,12 @@ class _RichTextWidgetState extends State<RichTextWidget> {
                         }),
                   TextSpan(
                     text: "与",
-                    style: TextStyle(color: Colors.grey, fontSize:_fontsize),
+                    style: TextStyle(color: Colors.grey, fontSize: _fontsize),
                   ),
                   TextSpan(
                       text: "<隐私协议>",
-                      style: TextStyle(color: Colors.blueAccent, fontSize: _fontsize),
+                      style: TextStyle(
+                          color: Colors.blueAccent, fontSize: _fontsize),
                       recognizer: _tgr2
                         ..onTap = () {
                           NavigatorUtil.pushPage(

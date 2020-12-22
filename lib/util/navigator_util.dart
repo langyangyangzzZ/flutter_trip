@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_trip/util/log_util.dart';
 
 class NavigatorUtil {
   ///[buildContext] 必传上下文
@@ -58,6 +59,7 @@ class NavigatorUtil {
     bool isReplace = false,
     Function(dynamic value) dismissCallBack,
   }) {
+    LogUtil.Log(tagging: "isOpaque", title: "$isOpaque");
     PageRoute pageRouteBuilder = new PageRouteBuilder(
         opaque: isOpaque,
         pageBuilder: (BuildContext context, Animation<double> animation,
@@ -70,11 +72,10 @@ class NavigatorUtil {
           //透明渐变
           return FadeTransition(
             //渐变
-            opacity: animation,
+            opacity: secondaryAnimation,
             child: child,
           );
         });
-
 
     //替换当前页面
     if (isReplace) {
