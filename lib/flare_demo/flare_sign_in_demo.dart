@@ -2,7 +2,7 @@ import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter_trip/flare_demo/flare_sign_in_controller.dart';
 import 'package:flutter_trip/flare_demo/signin_button.dart';
 import 'package:flutter_trip/flare_demo/tracking_text_input.dart';
-import 'package:flutter_trip/main.dart';
+import 'package:flutter_trip/home_pages/root_page.dart';
 import 'package:flutter/material.dart';
 class FlareDemo extends StatelessWidget {
   @override

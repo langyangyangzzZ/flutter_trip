@@ -243,11 +243,11 @@ class _VideoItemPageWidgetState extends State<VideoItemPageWidget>
         },
         //滑动开始回调
         onChangeStart: (double value){
-          Toast.toast(context,msg: "滑动开始$value");
+          // Toast.toast(context,msg: "滑动开始$value");
         },
         //滑动结束回调
         onChangeEnd: (double value){
-          Toast.toast(context,msg: "滑动结束$value");
+          // Toast.toast(context,msg: "滑动结束$value");
         },
       ),
     );

@@ -2,8 +2,7 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_trip/main.dart';
-import 'package:flutter_trip/util/gallery_unit.dart';
+import 'package:flutter_trip/home_pages/root_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_trip/util/toast.dart';
 
@@ -136,9 +135,7 @@ class _Snowflake_landing_PageState extends State<Snowflake_landing_Page>
     );
   }
 
-  /**
-   * 高斯模糊
-   */
+  /// 高斯模糊
   buildGaussianBlur() {
     return BackdropFilter(
       filter: ImageFilter.blur(sigmaX: 0.3, sigmaY: 0.3),
@@ -246,7 +243,7 @@ class _Snowflake_landing_PageState extends State<Snowflake_landing_Page>
       //随机的角度
       bubbleBean.theta = _random.nextDouble() * _maxTheta;
 
-      await _list.add(bubbleBean);
+      _list.add(bubbleBean);
     }
     return null;
   }

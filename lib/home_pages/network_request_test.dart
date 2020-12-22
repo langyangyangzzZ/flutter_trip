@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_trip/main.dart';
+import 'package:flutter_trip/home_pages/root_page.dart';
 import 'package:flutter_trip/tests/a_test.dart';
 import 'package:flutter_trip/tests/animation_text.dart';
 import 'file:///D:/FlutterProject/flutter_trip/lib/tests/snowflake_landing_text.dart';
@@ -12,7 +12,6 @@ import 'package:flutter_trip/tests/slider_text.dart';
 import 'package:flutter_trip/tests/snowflake_test.dart';
 import 'package:flutter_trip/tests/video_offical_text.dart';
 import 'package:flutter_trip/tests/video_page_widget.dart';
-import 'package:flutter_trip/tests/video_player_text.dart';
 
 class NetworkRequestTest extends StatefulWidget {
   @override

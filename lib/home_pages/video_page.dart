@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +15,17 @@ class VideoPage extends StatefulWidget {
 
 class _VideoPageState extends State<VideoPage> {
   //创建一个多订阅流
-  final StreamController<VideoPlayerController> _streamController = new StreamController.broadcast();
+  final StreamController<VideoPlayerController> _streamController =
+      new StreamController.broadcast();
 
   //播放控制器
   VideoPlayerController _videoPlayerController;
+
+  List<String> _listVideo = [
+    "assets/videos/wyy2.mp4",
+    "assets/videos/wyy1.mp4",
+    "assets/videos/kfc.mp4"
+  ];
 
   @override
   void initState() {
@@ -25,13 +33,15 @@ class _VideoPageState extends State<VideoPage> {
     super.initState();
     _streamController.stream.listen((event) {
       //当前控制器ID != 传递过来的标识 说明当前传递的是新的标识
-      if (_videoPlayerController != null && _videoPlayerController.textureId != event.textureId) {
+      if (_videoPlayerController != null &&
+          _videoPlayerController.textureId != event.textureId) {
         _videoPlayerController.pause();
       }
       _videoPlayerController = event;
 
       LogUtil.Log(
-          tagging: "streaminitState", title: "接收到消息${_videoPlayerController.textureId}");
+          tagging: "streaminitState",
+          title: "接收到消息${_videoPlayerController.textureId}");
     });
   }
 
@@ -68,7 +78,7 @@ class _VideoPageState extends State<VideoPage> {
         }
         return false;
       },
-        child: ListView.builder(
+      child: ListView.builder(
         //不缓存
         cacheExtent: 0,
         //加载20条数据
@@ -80,21 +90,36 @@ class _VideoPageState extends State<VideoPage> {
     );
   }
 
+  Random _random = new Random();
+
   Widget buildListViewItems() {
     return Container(
       height: 200,
       child: Stack(
         children: [
-          Positioned.fill(
-            child: Text(
-              "正在蜕变的CV工程师",
-              textAlign: TextAlign.center,
+          Positioned(
+            top: 2,
+            child: Row(
+              children: [
+                Container(
+                  child: Image.asset(
+                    "assets/images/flutterandroid1.png",
+                    width: 20,
+                    height: 20,
+                  ),
+                  margin: EdgeInsets.only(left: 20),
+                ),
+                Text(
+                  "正在蜕变的CV工程师",
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.only(top: 25,left: 20,right: 20),
             child: VideoItemPageWidget(
-              url: 'assets/video/kfc.mp4',
+              url: _listVideo[_random.nextInt(_listVideo.length)],
               isScroll: isScroll,
               streamController: _streamController,
             ),
