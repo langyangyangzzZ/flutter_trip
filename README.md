@@ -18,9 +18,13 @@ CSDN地址为:[https://blog.csdn.net/weixin_44819566](https://blog.csdn.net/weix
 
 记录:
 
-2020/12/19:[Flutter 小知识:ListView播放视频列表(一)](https://blog.csdn.net/weixin_44819566/article/details/111404744)
+2020/12/19:<br>
+  [Flutter 小知识:ListView播放视频列表(一)](https://blog.csdn.net/weixin_44819566/article/details/111404744)
 
-2020/12/22:[Flutter 小知识:ListView播放视频列表(二)](https://blog.csdn.net/weixin_44819566/article/details/111515224)
+2020/12/22:<br>
+  [Flutter 小知识:ListView播放视频列表(二)](https://blog.csdn.net/weixin_44819566/article/details/111515224)<br>
+  [Flutter Slider,CupertinoSlider滑动条](https://blog.csdn.net/weixin_44819566/article/details/111543716)
+ 
 
 
 
