@@ -26,9 +26,9 @@ CSDN地址为:[https://blog.csdn.net/weixin_44819566](https://blog.csdn.net/weix
   [Flutter Slider,CupertinoSlider滑动条](https://blog.csdn.net/weixin_44819566/article/details/111543716)
 
 2020/12/23:<br>
-[Flutter 小知识:CustomScrollView和SliverAppBar 组件](https://blog.csdn.net/weixin_44819566/article/details/111579338)<br>
+[Flutter 小知识:CustomScrollView和SliverAppBar 组件](https://blog.csdn.net/weixin_44819566/article/details/111579338)
 
-[Flutter 小知识SliverList(),SliverFixedExtentList(),SliverGrid()组件](https://blog.csdn.net/weixin_44819566/article/details/111589641)<br>
+[Flutter 小知识SliverList(),SliverFixedExtentList(),SliverGrid()组件](https://blog.csdn.net/weixin_44819566/article/details/111589641)
  
 
 
