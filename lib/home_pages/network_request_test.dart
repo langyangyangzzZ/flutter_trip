@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_trip/home_pages/root_page.dart';
 import 'package:flutter_trip/tests/a_test.dart';
 import 'package:flutter_trip/tests/animation_text.dart';
+import 'package:flutter_trip/tests/custom_scroll_widget.dart';
 import 'file:///D:/FlutterProject/flutter_trip/lib/tests/snowflake_landing_text.dart';
 import 'package:flutter_trip/tests/http_test.dart';
 import 'package:flutter_trip/tests/gridview_test.dart';
@@ -36,7 +38,7 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
         },
         child: Text("刷新"),
       ),
-      body: Column(
+      body: Wrap(
         children: [
           /**
            * Http页面
@@ -104,7 +106,10 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
            */
           initPage("Animated动画", AnimationTextWidget()),
 
+
           initPage("滑动条",SliderTextWidget()),
+
+          initPage("Sliver大家族",CustomScrollWidget())
         ],
       ),
     );
@@ -113,14 +118,17 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
   GlobalKey _keyGreen = GlobalKey();
 
   initPage(String title, Widget httpTest) {
-    return RaisedButton(
-      child: Text(title),
-      onPressed: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (BuildContext context) {
-          return httpTest;
-        }));
-      },
+    return Container(
+      margin: EdgeInsets.all(10),
+      child: RaisedButton(
+        child: Text(title),
+        onPressed: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (BuildContext context) {
+            return httpTest;
+          }));
+        },
+      ),
     );
   }
 
