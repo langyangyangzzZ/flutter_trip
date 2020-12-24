@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_trip/util/log_util.dart';
@@ -16,14 +18,10 @@ class CustomScrollWidget extends StatefulWidget {
 }
 
 class _CustomScrollWidgetState extends State<CustomScrollWidget> {
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:  CustomScrollView(
+      body: CustomScrollView(
 //      滑动类型
 //      BouncingScrollPhysics() 拉到最底部有回弹效果
 //    ClampingScrollPhysics() 包裹内容不会回弹
@@ -34,7 +32,7 @@ class _CustomScrollWidgetState extends State<CustomScrollWidget> {
 
         // 当条目不足时 true可以尝试滚动 false不可以滚动
         primary: true,
-          //缓存条目
+        //缓存条目
         cacheExtent: 0,
         //滚动方向
         scrollDirection: Axis.vertical,
@@ -43,7 +41,31 @@ class _CustomScrollWidgetState extends State<CustomScrollWidget> {
           initSliverFixedExtentList(),
           initSliverList(),
           initSliverGrid(),
+          initSliverPersistentHeader("第一组"),
+
+          //可隐藏掉哦...
+          initSliverToBoxAdapter(),
+
+          initSliverPersistentHeader("第二组"),
+
+          initSliverList(),
         ],
+      ),
+    );
+  }
+
+  Widget initSliverToBoxAdapter() {
+    return SliverToBoxAdapter(
+      child: Container(
+        height: 70,
+        child: Center(
+          child: Text(
+            "可隐藏掉哦..",
+            style: TextStyle(
+              //背景黄色
+                shadows: [Shadow(color: Colors.yellow, offset: Offset(1, 1))]),
+          ),
+        ),
       ),
     );
   }
@@ -51,7 +73,6 @@ class _CustomScrollWidgetState extends State<CustomScrollWidget> {
   /// appbar 右侧图片
   List<Widget> initAppBarRightIcon() {
     List<Widget> list = [];
-
     list.add(
       new IconButton(
         icon: Icon(Icons.add),
@@ -80,7 +101,7 @@ class _CustomScrollWidgetState extends State<CustomScrollWidget> {
       itemExtent: 70.0,
       delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
         return Text('SliverFixedExtentList$index ');
-      }, childCount: 10),
+      }, childCount: 5),
     );
   }
 
@@ -88,16 +109,20 @@ class _CustomScrollWidgetState extends State<CustomScrollWidget> {
   Widget initSliverList() {
     return SliverList(
       delegate: SliverChildBuilderDelegate((context, index) {
-        return Text(
-          "SliverList:$index",
-          textAlign: TextAlign.center,
+        return Container(
+          height: 100,
+          alignment: Alignment.center,
+          child: Text(
+            "SliverList:$index",
+            textAlign: TextAlign.center,
+          ),
         );
       }, childCount: 10),
     );
   }
 
   Widget initSliverAppBar() {
-    return  SliverAppBar(
+    return SliverAppBar(
       title: Text(
         "flutter",
         style: TextStyle(color: Colors.black),
@@ -107,13 +132,13 @@ class _CustomScrollWidgetState extends State<CustomScrollWidget> {
       //滑动高度
       expandedHeight: 230.0,
       //当snap = true时 这个参数必须为true!!!
-      floating: true,
+      floating: false,
 
       //AppBar固定
       pinned: true,
 
       //AppBar跟随手指滑动而滑动  floating必须为true才可以使用
-      snap: true,
+      snap: false,
 
       //滑动背景
       flexibleSpace: new FlexibleSpaceBar(
@@ -155,12 +180,67 @@ class _CustomScrollWidgetState extends State<CustomScrollWidget> {
       //子Widget布局
       delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
         return Text("SliverGrid:$index");
-      }, childCount: 20),
+      }, childCount: 16),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 4, //四列
         mainAxisSpacing: 8, //item上下间隔
         crossAxisSpacing: 8, //item左右间隔
       ),
     );
+  }
+
+  initSliverPersistentHeader(String title) {
+    return SliverPersistentHeader(
+        //是否固定头布局 默认false
+        pinned: true,
+        //是否浮动 默认false
+        floating: false,
+        delegate: MySliverDelegate(
+          //缩小后的布局高度
+          minHeight: 40.0,
+          //展开后的高度
+          maxHeight: 80.0,
+          child: Container(
+              color: Colors.redAccent,
+              child: Center(
+                child: Text(
+                  title,
+                  style: TextStyle(fontSize: 18, shadows: [
+                    Shadow(color: Colors.white, offset: Offset(1, 1))
+                  ]),
+                ),
+              )),
+        ));
+  }
+}
+
+class MySliverDelegate extends SliverPersistentHeaderDelegate {
+  MySliverDelegate({
+    @required this.minHeight,
+    @required this.maxHeight,
+    @required this.child,
+  });
+
+  final double minHeight; //最小高度
+  final double maxHeight; //最大高度
+  final Widget child; //子Widget布局
+
+  @override
+  double get minExtent => minHeight;
+
+  @override
+  double get maxExtent => max(maxHeight, minHeight);
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return new SizedBox.expand(child: child);
+  }
+
+  @override //是否需要重建
+  bool shouldRebuild(MySliverDelegate oldDelegate) {
+    return maxHeight != oldDelegate.maxHeight ||
+        minHeight != oldDelegate.minHeight ||
+        child != oldDelegate.child;
   }
 }

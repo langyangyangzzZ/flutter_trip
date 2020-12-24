@@ -1,6 +1,6 @@
 name: flutter_trip
 #description: A new Flutter module.
-description: A new Flutter application.
+description: 一款用来记录Flutter自学生涯的APP
 
 
 # The following line prevents the package from being accidentally published to
@@ -42,6 +42,7 @@ dependencies:
   animations: ^1.1.2 #Material Design 设计风格中的容器转换过渡   https://pub.dev/packages/animations/install
   video_player: ^1.0.1 # 视屏播放   https://pub.dev/packages/video_player/install
   image_picker: ^0.6.7+17 #选取照片   https://pub.dev/packages/image_picker/install
+  flutter_echart: ^1.0.0 #饼状图   https://pub.flutter-io.cn/packages/flutter_echart
 
 dev_dependencies:
   flutter_test:

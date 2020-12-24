@@ -8,8 +8,10 @@ import 'file:///D:/FlutterProject/flutter_trip/lib/tests/snowflake_landing_text.
 import 'package:flutter_trip/tests/http_test.dart';
 import 'package:flutter_trip/tests/gridview_test.dart';
 import 'package:flutter_trip/tests/listview_text.dart';
+import 'package:flutter_trip/tests/plug_text.dart';
 import 'package:flutter_trip/tests/rich_text.dart';
 import 'package:flutter_trip/tests/shared_perferences_test.dart';
+import 'package:flutter_trip/tests/show_popup_text.dart';
 import 'package:flutter_trip/tests/slider_text.dart';
 import 'package:flutter_trip/tests/snowflake_test.dart';
 import 'package:flutter_trip/tests/video_offical_text.dart';
@@ -48,7 +50,7 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
           /**
            * Sp页面
            */
-          initPage("Http页面", SPTest()),
+          initPage("SP页面", SPTest()),
 
           /**
            * ListVIew页面
@@ -109,7 +111,13 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
 
           initPage("滑动条",SliderTextWidget()),
 
-          initPage("Sliver大家族",CustomScrollWidget())
+          initPage("Sliver大家族",CustomScrollWidget()),
+
+
+          initPage("常用炫酷插件",PlugWidget()),
+
+
+          initPage("弹出Popup",ShowPopupWidget())
         ],
       ),
     );
