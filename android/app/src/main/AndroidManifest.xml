@@ -9,7 +9,7 @@
     
     <application
         android:label="flutter_trip"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/flutterandroid1">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

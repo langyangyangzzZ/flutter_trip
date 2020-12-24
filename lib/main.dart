@@ -20,12 +20,11 @@ void main() {
     //气泡动画
     home: Snowflake_landing_Page(),
 
+
+
     debugShowCheckedModeBanner: false,
 
     //小熊动画
     // home: FlareDemo(),
-
   ));
 }
-
-

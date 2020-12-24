@@ -4,6 +4,7 @@ import 'package:flutter_trip/home_pages/root_page.dart';
 import 'package:flutter_trip/tests/a_test.dart';
 import 'package:flutter_trip/tests/animation_text.dart';
 import 'package:flutter_trip/tests/custom_scroll_widget.dart';
+import 'package:flutter_trip/tests/custom_scroll_widget2.dart';
 import 'file:///D:/FlutterProject/flutter_trip/lib/tests/snowflake_landing_text.dart';
 import 'package:flutter_trip/tests/http_test.dart';
 import 'package:flutter_trip/tests/gridview_test.dart';
@@ -112,6 +113,8 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
           initPage("滑动条",SliderTextWidget()),
 
           initPage("Sliver大家族",CustomScrollWidget()),
+
+          initPage("Sliver实战案例",CustomScrollWidget2()),
 
 
           initPage("常用炫酷插件",PlugWidget()),

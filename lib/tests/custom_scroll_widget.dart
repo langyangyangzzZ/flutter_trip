@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_trip/util/log_util.dart';
 import 'package:flutter_trip/util/toast.dart';
 
 /*
@@ -49,6 +48,7 @@ class _CustomScrollWidgetState extends State<CustomScrollWidget> {
           initSliverPersistentHeader("第二组"),
 
           initSliverList(),
+
         ],
       ),
     );
@@ -62,7 +62,7 @@ class _CustomScrollWidgetState extends State<CustomScrollWidget> {
           child: Text(
             "可隐藏掉哦..",
             style: TextStyle(
-              //背景黄色
+                //背景黄色
                 shadows: [Shadow(color: Colors.yellow, offset: Offset(1, 1))]),
           ),
         ),
@@ -146,13 +146,17 @@ class _CustomScrollWidgetState extends State<CustomScrollWidget> {
           "assets/images/flutter.jpg",
           fit: BoxFit.fill,
         ),
+
         // titlePadding: EdgeInsets.only(left: 60),
+
         title: new Text(
           "android",
           style: TextStyle(color: Colors.black),
         ),
+
         //标题居中
         centerTitle: true,
+
         //滑动模式  CollapseMode.parallax,
         //          CollapseMode.none,
         collapseMode: CollapseMode.pin,
