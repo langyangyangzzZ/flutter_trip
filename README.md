@@ -31,7 +31,7 @@ CSDN地址为:[https://blog.csdn.net/weixin_44819566](https://blog.csdn.net/weix
 [Flutter Sliver大家族之SliverList(),SliverFixedExtentList(),SliverGrid()组件②](https://blog.csdn.net/weixin_44819566/article/details/111589641)
 
 2020/12/24:<br>
-[Flutter Sliver大家族之SliverPersistentHeader()和SliverToBoxAdapter()组件(实现固定头布局)③](https://github.com/langyangyangzzZ/flutter_trip/blob/master/lib/tests/custom_scroll_widget.dart)<br>
+[Flutter Sliver大家族之SliverPersistentHeader()和SliverToBoxAdapter()组件(实现固定头布局)③](https://blog.csdn.net/weixin_44819566/article/details/111606494)<br>
 
 [Android(java)理论知识.日积月累](https://blog.csdn.net/weixin_44819566/article/details/111611189)
  
