@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:custom_refresh_plugin/custom_refresh_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_trip/util/toast.dart';
 
 /*
  * @ClassName custom_scroll_widget
@@ -22,7 +24,6 @@ class _CustomScrollWidget2State extends State<CustomScrollWidget2>
   PageController _pageController;
 
   // ignore: non_constant_identifier_names
-  List<String> _tabtitleList = [];
 
   Timer _timer;
 
@@ -32,33 +33,44 @@ class _CustomScrollWidget2State extends State<CustomScrollWidget2>
     // TODO: implement initState
     super.initState();
 
-    for (int i = 0; i <= 1; i++) {
-      _tabtitleList.add("标签$i");
-    }
-
     //Tab控制器
-    _tabController = new TabController(
-      vsync: this,
-      length: _tabtitleList.length,
-    );
+    initTabController();
 
     ///Page控制器
-    _pageController = PageController(
+    initPageController();
+
+    //初始化Timer
+    initTimer();
+
+
+  }
+
+  void initTabController() {
+    _tabController = new TabController(
+      vsync: this,
+      length: 2,
+    );
+  }
+
+  PageController initPageController() {
+    return _pageController = PageController(
         viewportFraction: 0.9, //设置每一个Page不占满屏幕,漏出上一个和下一个Page!
         initialPage: _index, //设置默认Page
         keepPage: true //是否保存当前滚动page
-    );
+        );
+  }
 
-
-    _timer = new Timer.periodic(new Duration(seconds: 2), (timer) {
+  void initTimer() {
+    _timer = new Timer.periodic(new Duration(seconds: 3), (timer) {
       if (mounted) {
         setState(() {
-          _index ++;
-          if(_index == 4){
+          _index++;
+          if (_index == 4) {
             _index = 0;
           }
           //设置PageView滑动到的页面
-          _pageController.animateToPage(_index, duration: Duration(seconds: 2),curve: Curves.ease);
+          _pageController.animateToPage(_index,
+              duration: Duration(seconds: 2), curve: Curves.ease);
         });
       }
     });
@@ -76,14 +88,44 @@ class _CustomScrollWidget2State extends State<CustomScrollWidget2>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: NestedScrollView(
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return [
-            initSliverAppBar(),
-          ];
+      body: RefreshIndicator(
+        //下拉刷新回调方法
+        onRefresh: initRefresh,
+        //可滚动组件在滚动时会发送ScrollNotification类型的通知
+        notificationPredicate: (ScrollNotification notifation) {
+          //该属性包含当前ViewPort及滚动位置等信息
+          ScrollMetrics scrollMetrics = notifation.metrics;
+          if (scrollMetrics.minScrollExtent == 0) {
+            return true;
+          } else {
+            return false;
+          }
         },
-        body: _initTabBarView(),
+        //NestedScrollView(
+        child: initNestedScrollView(),
       ),
+    );
+  }
+
+  initRefresh() async {
+    //模拟网络刷新 等待2秒
+    await Future.delayed(Duration(milliseconds: 2000)).then((value) {
+      Toast.toast(context, msg: "已刷新");
+    });
+    //返回值以结束刷新
+    return Future.value(true);
+  }
+
+  NestedScrollView initNestedScrollView() {
+    return NestedScrollView(
+      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+        return [
+          ///初始化SliverAppBar
+          initSliverAppBar(),
+        ];
+      },
+      //初始化TabBar
+      body: _initTabBarView(),
     );
   }
 
@@ -107,7 +149,56 @@ class _CustomScrollWidget2State extends State<CustomScrollWidget2>
         background: initPageView(),
       ),
 
-      title: Container(
+      //搜索按钮
+      title: initsearch(),
+      bottom: PreferredSize(
+        preferredSize: Size(MediaQuery.of(context).size.width, 44),
+        //初始化initTabBar
+        child: initTabBar(),
+      ),
+    );
+  }
+
+  TabBar initTabBar() {
+    return TabBar(
+      controller: _tabController,
+
+      //Tab控制条颜色
+      indicatorColor: Colors.blue,
+
+      //字体颜色
+      labelColor: Colors.black,
+
+      //Tab粗细
+      indicatorWeight: 3,
+
+      //设置Tab字体与控制器一样大
+      indicatorSize: TabBarIndicatorSize.label,
+
+      //Tab是否平分
+      isScrollable: false,
+
+      tabs: [
+        Tab(
+          child: Text(
+            "数学",
+          ),
+        ),
+        Tab(
+          child: Text(
+            "英语",
+          ),
+        ),
+      ],
+    );
+  }
+
+  InkWell initsearch() {
+    return InkWell(
+      onTap: () {
+        Toast.toast(context, msg: "点击了搜索");
+      },
+      child: Container(
         height: 38,
         decoration: BoxDecoration(
             color: Colors.white,
@@ -119,43 +210,6 @@ class _CustomScrollWidget2State extends State<CustomScrollWidget2>
           style: TextStyle(color: Colors.black, fontSize: 18),
         ),
       ),
-      bottom: PreferredSize(
-        preferredSize: Size(MediaQuery
-            .of(context)
-            .size
-            .width, 44),
-        child: TabBar(
-          controller: _tabController,
-
-          //Tab控制条颜色
-          indicatorColor: Colors.blue,
-
-          //字体颜色
-          labelColor: Colors.black,
-
-          //Tab粗细
-          indicatorWeight: 3,
-
-          //设置Tab字体与控制器一样大
-          indicatorSize: TabBarIndicatorSize.label,
-
-          //Tab是否平分
-          isScrollable: false,
-
-          tabs: [
-            Tab(
-              child: Text(
-                "数学",
-              ),
-            ),
-            Tab(
-              child: Text(
-                "英语",
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 
@@ -164,24 +218,15 @@ class _CustomScrollWidget2State extends State<CustomScrollWidget2>
     return TabBarView(
       controller: _tabController,
       children: [
-        Center(
-          child: Text(
-            "数学",
-            style: TextStyle(color: Colors.black, fontSize: 40),
-          ),
-        ),
-        Center(
-          child: Text(
-            "英语",
-            style: TextStyle(color: Colors.black, fontSize: 40),
-          ),
-        ),
+        initListView("数学"),
+        initListView("英语"),
       ],
     );
   }
-
+  //默认从0的位置开始
   int _index = 0;
 
+  //初始化PageView
   Widget initPageView() {
     return Stack(
       children: [
@@ -212,37 +257,38 @@ class _CustomScrollWidget2State extends State<CustomScrollWidget2>
     );
   }
 
-  Container buildPageView() {
+  //创建PageView
+  Widget buildPageView() {
     return Container(
-        color: Colors.white,
-        padding: EdgeInsets.all(10),
-        child: PageView(
-            controller:_pageController,
-            children: [
-            initPageItem(Colors.deepPurple, "Page1"),
-        initPageItem(Colors.deepOrange, "Page2"),
-        initPageItem(Colors.yellow, "Page3"),
-        initPageItem(Colors.lightGreenAccent, "Page4"),
+      color: Colors.white,
+      padding: EdgeInsets.all(10),
+      child: PageView(
+        controller: _pageController,
+        children: [
+          initPageItem(Colors.deepPurple, "Page1"),
+          initPageItem(Colors.deepOrange, "Page2"),
+          initPageItem(Colors.yellow, "Page3"),
+          initPageItem(Colors.lightGreenAccent, "Page4"),
         ],
-        onPageChanged: (index)
-    {
-      setState(() {
-        _index = index;
-      });
-    },)
-    ,
+        onPageChanged: (index) {
+          setState(() {
+            _index = index;
+          });
+        },
+      ),
     );
   }
 
   Widget initPageItem(Color color, String title) {
     return Container(
       decoration:
-      BoxDecoration(color: color, borderRadius: BorderRadius.circular(20)),
+          BoxDecoration(color: color, borderRadius: BorderRadius.circular(20)),
       alignment: Alignment.center,
       child: Text(title),
     );
   }
 
+  //初始化圆
   Widget initRound(bool isselect) {
     return AnimatedContainer(
       duration: Duration(milliseconds: 800),
@@ -251,8 +297,23 @@ class _CustomScrollWidget2State extends State<CustomScrollWidget2>
       margin: EdgeInsets.only(left: 5, right: 5),
       curve: Curves.fastOutSlowIn,
       decoration: BoxDecoration(
-          color: isselect ? Colors.black : Colors.white,
-          borderRadius: BorderRadius.circular(20)),
+        color: isselect ? Colors.black : Colors.white,
+        borderRadius: BorderRadius.circular(20),
+      ),
+    );
+  }
+
+  //初始化ListView
+  initListView(String s) {
+    return ListView.builder(
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+          height: 50,
+          alignment: Alignment.center,
+          child: Text("$s$index"),
+        );
+      },
+      itemCount: 30,
     );
   }
 }
