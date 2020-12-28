@@ -1,8 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart'; //依赖地址:https://pub.dev/packages/shared_preferences
 
-/**
- * szj 2020/11/20
- */
+/// szj 2020/11/20
 class SpUtil {
   /// 通过泛型的形式存储值
   ///    ---------------------------------
@@ -12,7 +10,6 @@ class SpUtil {
     SharedPreferences instance = await SharedPreferences.getInstance();
     switch (T) {
       case String:
-        print("SpUtilsetData:T:${T}\t-- key:$key");
         instance.setString(key, value as String);
         break;
       case int:
@@ -36,8 +33,7 @@ class SpUtil {
     var t;
     switch (T) {
       case String:
-        print("SpUtilgetData:T:${T}\t-- key:$key");
-       t = await instance.getString(key);
+       t = instance.getString(key);
         break;
       case int:
         t = instance.getInt(key);
@@ -52,25 +48,19 @@ class SpUtil {
     return t;
   }
 
-  /**
-   * 存储String类型的List集合
-   */
+  /// 存储String类型的List集合
  static setStringList(String key,List<String> value)async{
     SharedPreferences instance= await SharedPreferences.getInstance();
     instance.setStringList(key, value);
   }
 
-  /**
-   * 获取存储的String类型List集合
-   */
+  /// 获取存储的String类型List集合
   static Future<List<String>> getStringList(String key) async{
     SharedPreferences instance= await SharedPreferences.getInstance();
    return instance.getStringList(key);
   }
 
-  /**
-   * 删除key对应的值
-   */
+  /// 删除key对应的值
   static remove(String key) async{
     SharedPreferences instance= await SharedPreferences.getInstance();
     instance.remove(key);

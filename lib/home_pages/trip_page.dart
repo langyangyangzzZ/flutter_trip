@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_trip/util/entity_state.dart';
 import 'package:image_picker/image_picker.dart';
 
 class TripPage extends StatefulWidget {
@@ -38,20 +39,27 @@ class _TripPageState extends State<TripPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: getPhone,
         tooltip: 'Pick Image',
-        child: Icon(Icons.add_a_photo),
+        child: Icon(
+          Icons.add_a_photo,
+
+        ),
+        backgroundColor:   EntityState.ThemeColor,
       ),
     );
   }
 
-  Widget NoContainer(){
+  Widget NoContainer() {
     //无选择图片
     return Center(
-      child: Text("右下角先选择照片哦(*^▽^*)~",style: TextStyle(fontSize: 20),),
+      child: Text(
+        "右下角先选择照片哦(*^▽^*)~",
+        style: TextStyle(fontSize: 20),
+      ),
     );
   }
 
   //有选择图片
-  Widget YesContainer(){
+  Widget YesContainer() {
     return Container(
       margin: EdgeInsets.only(top: 30),
       alignment: Alignment.center,

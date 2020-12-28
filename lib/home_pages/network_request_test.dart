@@ -35,12 +35,6 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
       appBar: AppBar(
         title: (Text("测试")),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {});
-        },
-        child: Text("刷新"),
-      ),
       body: Wrap(
         children: [
           /**
@@ -60,7 +54,7 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
           /**
            *气泡登录页
            */
-          initPage("气泡登录页", Snowflake_landing_Page()),
+          initPage("气泡登录页", snowflake_landing_page()),
           /**
            *
            */

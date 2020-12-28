@@ -117,7 +117,6 @@ class _MainPageState extends State<MainPage>
             //选中样式
             activeIcon: Icon(
               Icons.home,
-              color: Colors.blue,
             ),
           ),
           /**
@@ -128,7 +127,6 @@ class _MainPageState extends State<MainPage>
             label: "视频",
             activeIcon: Icon(
               Icons.video_call,
-              color: Colors.blue,
             ),
           ),
           /**
@@ -139,7 +137,6 @@ class _MainPageState extends State<MainPage>
             label: "旅拍",
             activeIcon: Icon(
               Icons.camera_alt,
-              color: Colors.blue,
             ),
           ),
           /**
@@ -150,7 +147,6 @@ class _MainPageState extends State<MainPage>
             label: "我的",
             activeIcon: Icon(
               Icons.android,
-              color: Colors.blue,
             ),
           ),
           /**
@@ -161,7 +157,6 @@ class _MainPageState extends State<MainPage>
             label: "测试",
             activeIcon: Icon(
               Icons.text_fields_sharp,
-              color: Colors.blue,
             ),
           ),
         ],

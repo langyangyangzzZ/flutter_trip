@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:custom_refresh_plugin/custom_refresh_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_trip/util/toast.dart';

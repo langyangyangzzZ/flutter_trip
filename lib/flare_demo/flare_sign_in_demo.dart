@@ -4,16 +4,6 @@ import 'package:flutter_trip/flare_demo/signin_button.dart';
 import 'package:flutter_trip/flare_demo/tracking_text_input.dart';
 import 'package:flutter_trip/home_pages/root_page.dart';
 import 'package:flutter/material.dart';
-class FlareDemo extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: FlareSignInDemo() ,
-    );
-  }
-}
-
 
 class FlareSignInDemo extends StatefulWidget {
   @override

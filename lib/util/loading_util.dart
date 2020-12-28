@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_trip/util/entity_state.dart';
 import 'package:m_loading/m_loading.dart';
 
 
@@ -12,7 +13,7 @@ class LoadingUtil{
         alignment: Alignment.center,
            height: height??100 ,
            child: SquareGridScaleLoading(
-             color: Colors.lightBlue,
+             color: EntityState.ThemeColor,
            ),
        );
  }
