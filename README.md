@@ -34,8 +34,10 @@ CSDN地址为:[https://blog.csdn.net/weixin_44819566](https://blog.csdn.net/weix
 [Flutter Sliver大家族之SliverPersistentHeader()和SliverToBoxAdapter()组件(实现固定头布局)③](https://blog.csdn.net/weixin_44819566/article/details/111606494)<br>
 
 [Android(java)理论知识.日积月累](https://blog.csdn.net/weixin_44819566/article/details/111611189)
- 
 
+ 
+2020/12/28:<br>
+[Flutter 全局控制器之Provider](https://blog.csdn.net/weixin_44819566/article/details/111866401)
 
 
 
