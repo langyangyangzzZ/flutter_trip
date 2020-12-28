@@ -80,16 +80,16 @@ class _SettingWidgetState extends State<SettingWidget> {
       //主题
       leading: Icon(
         Icons.colorize,
-        color: Colors.blue,
+        color: EntityState.ThemeColor,
       ),
       title: Text(
         '颜色主题',
-        style: TextStyle(color: Colors.blue),
+        style: TextStyle(color:EntityState.ThemeColor),
       ),
       initiallyExpanded: true,
       trailing: Icon(
         Icons.expand_more,
-        color: Colors.blue,
+        color: EntityState.ThemeColor,
       ),
        //展开关闭监听
        onExpansionChanged: (v){
