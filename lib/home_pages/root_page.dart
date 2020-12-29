@@ -15,7 +15,6 @@ import 'package:flutter_trip/util/sp_util.dart';
  * CSDN:https://blog.csdn.net/weixin_44819566
  * 公众号:码上变有钱
  */
-
 /// 主页面
 class MainPage extends StatefulWidget {
   @override

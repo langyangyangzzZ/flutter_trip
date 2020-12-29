@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_trip/tests/video_page_widget.dart';
+import 'file:///D:/FlutterProject/flutter_trip/lib/logins/video_page_widget.dart';
 
 /*
  * @ClassName video_bean

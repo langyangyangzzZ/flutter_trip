@@ -44,6 +44,10 @@ class SpUtil {
       case bool:
         t = instance.getBool(key);
         break;
+
+      default:
+        t = null;
+        break;
     }
     return t;
   }

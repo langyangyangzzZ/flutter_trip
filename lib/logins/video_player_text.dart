@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_trip/tests/video_page_widget.dart';
+import 'package:flutter_trip/logins/video_page_widget.dart';
 import 'package:video_player/video_player.dart';
 
 /// 1217

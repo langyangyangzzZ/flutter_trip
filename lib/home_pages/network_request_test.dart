@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_trip/home_pages/root_page.dart';
+import 'package:flutter_trip/logins/video_page_widget.dart';
 import 'package:flutter_trip/tests/a_test.dart';
 import 'package:flutter_trip/tests/animation_text.dart';
+import 'package:flutter_trip/tests/cupertino_picker_text.dart';
 import 'package:flutter_trip/tests/custom_scroll_widget.dart';
 import 'package:flutter_trip/tests/custom_scroll_widget2.dart';
-import 'file:///D:/FlutterProject/flutter_trip/lib/tests/snowflake_landing_text.dart';
 import 'package:flutter_trip/tests/http_test.dart';
 import 'package:flutter_trip/tests/gridview_test.dart';
 import 'package:flutter_trip/tests/listview_text.dart';
@@ -14,9 +15,9 @@ import 'package:flutter_trip/tests/rich_text.dart';
 import 'package:flutter_trip/tests/shared_perferences_test.dart';
 import 'package:flutter_trip/tests/show_popup_text.dart';
 import 'package:flutter_trip/tests/slider_text.dart';
+import 'file:///D:/FlutterProject/flutter_trip/lib/logins/snowflake_landing_widget.dart';
 import 'package:flutter_trip/tests/snowflake_test.dart';
 import 'package:flutter_trip/tests/video_offical_text.dart';
-import 'package:flutter_trip/tests/video_page_widget.dart';
 
 class NetworkRequestTest extends StatefulWidget {
   @override
@@ -54,7 +55,7 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
           /**
            *气泡登录页
            */
-          initPage("气泡登录页", snowflake_landing_page()),
+          initPage("气泡登录页", SnowflakeLandingWidget()),
           /**
            *
            */
@@ -113,7 +114,9 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
           initPage("常用炫酷插件",PlugWidget()),
 
 
-          initPage("弹出Popup",ShowPopupWidget())
+          initPage("弹出Popup",ShowPopupWidget()),
+
+          initPage("CupertinoPicker",CupertinoPickerWidget()),
         ],
       ),
     );

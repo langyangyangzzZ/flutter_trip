@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_trip/tests/video_page_widget.dart';
+import 'file:///D:/FlutterProject/flutter_trip/lib/logins/video_page_widget.dart';
 import 'package:flutter_trip/util/log_util.dart';
 import 'package:flutter_trip/util/toast.dart';
 import 'package:video_player/video_player.dart';

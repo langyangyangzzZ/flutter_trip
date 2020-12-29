@@ -43,7 +43,7 @@ class _TripPageState extends State<TripPage> {
           Icons.add_a_photo,
 
         ),
-        backgroundColor:   EntityState.ThemeColor,
+        backgroundColor:   EntityState.themeColor,
       ),
     );
   }

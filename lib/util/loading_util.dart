@@ -13,7 +13,7 @@ class LoadingUtil{
         alignment: Alignment.center,
            height: height??100 ,
            child: SquareGridScaleLoading(
-             color: EntityState.ThemeColor,
+             color: EntityState.themeColor,
            ),
        );
  }

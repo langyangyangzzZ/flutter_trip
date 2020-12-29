@@ -1,11 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_trip/tests/video_player_text.dart';
+import 'package:flutter_trip/logins/video_player_text.dart';
 import 'package:flutter_trip/util/log_util.dart';
 import 'package:flutter_trip/util/navigator_util.dart';
 import 'package:flutter_trip/util/toast.dart';
-
 
 /// 1217
 /// szj
@@ -46,15 +45,15 @@ class _VideoPageWidgetState extends State<VideoPageWidget> {
     super.initState();
     //1s执行一下
     _timer = Timer.periodic(new Duration(seconds: 1), (value) {
-      // if (widget.time == 1) {
-      //   //关闭
-      //   _timer.cancel();
-      //   Toast.toast(context, msg: "已跳转");
-      //   goHome();
-      // }
-      // widget.time--;
-      // setState(() {});
-      // print("time: ${widget.time},value:$value");
+      if (widget.time == 1) {
+        //关闭
+        _timer.cancel();
+        Toast.toast(context, msg: "已跳转");
+        goHome();
+      }
+      widget.time--;
+      setState(() {});
+      print("time: ${widget.time},value:$value");
     });
   }
 
@@ -76,7 +75,7 @@ class _VideoPageWidgetState extends State<VideoPageWidget> {
       body: Stack(
         children: [
           //视屏播放
-          VideoPlayerWidget(url: widget.url, type: widget.type),
+          VideoPlayerWidget(url: widget.url),
 
           //右上角跳转
           Positioned(

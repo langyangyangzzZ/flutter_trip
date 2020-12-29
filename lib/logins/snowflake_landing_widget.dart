@@ -4,11 +4,13 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_trip/home_pages/root_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_trip/util/entity_state.dart';
+import 'package:flutter_trip/util/sp_util.dart';
 import 'package:flutter_trip/util/toast.dart';
 
-class snowflake_landing_page extends StatefulWidget {
+class SnowflakeLandingWidget extends StatefulWidget {
   @override
-  _snowflake_landing_pageState createState() => _snowflake_landing_pageState();
+  _SnowflakeLandingWidgetState createState() => _SnowflakeLandingWidgetState();
 }
 
 Color getRandomColor(Random random) {
@@ -18,7 +20,7 @@ Color getRandomColor(Random random) {
   return Color.fromARGB(a, 255, 255, 255);
 }
 
-class _snowflake_landing_pageState extends State<snowflake_landing_page>
+class _SnowflakeLandingWidgetState extends State<SnowflakeLandingWidget>
     with TickerProviderStateMixin {
   List<BubbleBean> _list = [];
 
@@ -42,11 +44,10 @@ class _snowflake_landing_pageState extends State<snowflake_landing_page>
     super.initState();
     //创建动画,执行为1秒
     _animationController =
-    new AnimationController(vsync: this, duration: Duration(seconds: 5));
+        new AnimationController(vsync: this, duration: Duration(seconds: 5));
     //动画监听器
     _animationController.addListener(() {
-      if (mounted)
-        setState(() {});
+      if (mounted) setState(() {});
     });
 
     _animationController.addStatusListener((status) {
@@ -55,7 +56,7 @@ class _snowflake_landing_pageState extends State<snowflake_landing_page>
 
     //渐变动画
     _tweenAnimation =
-    new AnimationController(vsync: this, duration: Duration(seconds: 1));
+        new AnimationController(vsync: this, duration: Duration(seconds: 1));
 
     _tweenAnimation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
@@ -84,25 +85,25 @@ class _snowflake_landing_pageState extends State<snowflake_landing_page>
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-          //设置为屏幕为屏幕的宽 也可以使用MediaQuery.of(context).size.width
-          width: double.infinity,
-          //设置为屏幕为屏幕的高 也可以使用MediaQuery.of(context).size.height
-          height: double.infinity,
-          child: Stack(
-            children: [
-              //渐变背景
-              buildGradientBackground(),
-              // //随机气泡
-              buildRandomBubble(context),
-              // //高斯模糊
-              buildGaussianBlur(),
-              // // //Hellow Word
-              buildTopText(),
-              // // //底部输入框
-              buildButtonTextField(),
-            ],
-          ),
-        ));
+      //设置为屏幕为屏幕的宽 也可以使用MediaQuery.of(context).size.width
+      width: double.infinity,
+      //设置为屏幕为屏幕的高 也可以使用MediaQuery.of(context).size.height
+      height: double.infinity,
+      child: Stack(
+        children: [
+          //渐变背景
+          buildGradientBackground(),
+          // //随机气泡
+          buildRandomBubble(context),
+          // //高斯模糊
+          buildGaussianBlur(),
+          // // //Hellow Word
+          buildTopText(),
+          // // //底部输入框
+          buildButtonTextField(),
+        ],
+      ),
+    ));
   }
 
   //渐变背景
@@ -127,9 +128,7 @@ class _snowflake_landing_pageState extends State<snowflake_landing_page>
     return CustomPaint(
       painter: MyCustomPaint(_list, _random),
       //设置屏幕大小  MediaQuery.of(context).size是屏幕的宽和高
-      size: MediaQuery
-          .of(context)
-          .size,
+      size: MediaQuery.of(context).size,
     );
   }
 
@@ -146,17 +145,36 @@ class _snowflake_landing_pageState extends State<snowflake_landing_page>
   //顶部Hellow Word文本
   buildTopText() {
     return Container(
-      width: MediaQuery
-          .of(context)
-          .size
-          .width,
-      margin: EdgeInsets.only(top: 100),
-      child: Text("Hellow Word",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-              fontSize: 40,
-              color: Colors.lightBlue,
-              fontWeight: FontWeight.bold)),
+      padding: EdgeInsets.only(top: 80),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).pop();
+            },
+            child: Hero(
+              tag: EntityState.heroHeadImageToLogin,
+              child: Image.asset(
+                "assets/images/flutterandroid1.png",
+                width: 45,
+                height: 45,
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Container(
+            child: Text("欢迎登陆",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontSize: 40,
+                    color: Colors.lightBlue,
+                    fontWeight: FontWeight.bold)),
+          ),
+        ],
+      ),
     );
   }
 
@@ -198,6 +216,9 @@ class _snowflake_landing_pageState extends State<snowflake_landing_page>
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
+                  //点击登陆 保存为true 标识已经登陆了
+                  SpUtil.setData<bool>(EntityState.spIsLogin, true);
+
                   //跳转页面并吧当前状态取消掉
                   //跳转并关闭当前页面
                   Navigator.pushAndRemoveUntil(
@@ -205,7 +226,7 @@ class _snowflake_landing_pageState extends State<snowflake_landing_page>
                     new MaterialPageRoute(
                       builder: (context) => new MainPage(),
                     ),
-                        (route) => route == null,
+                    (route) => route == null,
                   );
                 },
                 child: Text("登录", textAlign: TextAlign.center),
@@ -250,6 +271,7 @@ class _snowflake_landing_pageState extends State<snowflake_landing_page>
   }
 }
 
+// ignore: must_be_immutable
 class MyTextField extends StatelessWidget {
   String _lable;
 
@@ -286,7 +308,7 @@ class MyTextField extends StatelessWidget {
 
 class MyCustomPaint extends CustomPainter {
   Paint _paint = new Paint()
-  //设置锯齿
+    //设置锯齿
     ..isAntiAlias = true;
 
   List<BubbleBean> _list;

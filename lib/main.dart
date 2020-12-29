@@ -1,6 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_trip/flare_demo/flare_sign_in_demo.dart';
-import 'package:flutter_trip/tests/snowflake_landing_text.dart';
+import 'package:flutter_trip/home_pages/root_page.dart';
+import 'package:flutter_trip/logins/video_page_widget.dart';
 import 'package:flutter_trip/util/entity_state.dart';
 import 'package:flutter_trip/util/log_util.dart';
 import 'package:flutter_trip/util/providers.dart';
@@ -8,7 +10,7 @@ import 'package:flutter_trip/util/sp_util.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-    /*
+  /*
       改变状态栏颜色为透明
       SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(statusBarColor:Colors.transparent);
       SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
@@ -22,8 +24,6 @@ void main() {
       // ignore: missing_required_param
       child: Consumer<AppInfoProvider>(
         builder: (context, appInfo, child) {
-
-
           return _initMaterialApp(appInfo);
         },
       ),
@@ -34,7 +34,12 @@ void main() {
 MaterialApp _initMaterialApp(AppInfoProvider appInfo) {
   return MaterialApp(
     // //气泡动画
-    home: snowflake_landing_page(),
+    home: VideoPageWidget(
+      //随机视频播放
+      url: EntityState.getRandomVideo(),
+      //要跳转的页面
+      widget: MainPage(),
+    ),
     theme: ThemeData(
       //主题模式
       primaryColor: EntityState.themeColorMap[appInfo.themeColor],
@@ -47,3 +52,17 @@ MaterialApp _initMaterialApp(AppInfoProvider appInfo) {
   );
 }
 
+//true登陆 false 不登录
+bool isLogin = false;
+
+bool initLogin() {
+  //判断是否是第一次登陆
+  SpUtil.getDate<bool>(EntityState.spIsOneLogin).then((value) {
+    if (value != null) {
+      LogUtil.LogI("$value", tagging: "valueSp:");
+      isLogin = value;
+    }
+  }).whenComplete(() {
+    return isLogin;
+  });
+}

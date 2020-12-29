@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_trip/util/entity_state.dart';
 import 'package:flutter_trip/util/providers.dart';
-import 'package:flutter_trip/util/sp_util.dart';
 import 'package:flutter_trip/util/toast.dart';
 import 'package:provider/provider.dart';
 
@@ -57,7 +56,7 @@ class _SettingWidgetState extends State<SettingWidget> {
     return SwitchListTile(
       title: Text("夜间模式${isNight ? "已开启" : "未开启"}"),
       //按钮打开颜色
-      activeColor: EntityState.ThemeColor,
+      activeColor: EntityState.themeColor,
       onChanged: (bool value) {
         setState(() {
           isNight = value;
@@ -80,16 +79,16 @@ class _SettingWidgetState extends State<SettingWidget> {
       //主题
       leading: Icon(
         Icons.colorize,
-        color: EntityState.ThemeColor,
+        color: EntityState.themeColor,
       ),
       title: Text(
         '颜色主题',
-        style: TextStyle(color:EntityState.ThemeColor),
+        style: TextStyle(color:EntityState.themeColor),
       ),
       initiallyExpanded: true,
       trailing: Icon(
         Icons.expand_more,
-        color: EntityState.ThemeColor,
+        color: EntityState.themeColor,
       ),
        //展开关闭监听
        onExpansionChanged: (v){
@@ -117,7 +116,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                     .setTheme(key);
                 setState(() {
                   //保存默认颜色
-                  EntityState.ThemeColor = EntityState.themeColorMap[key];
+                  EntityState.themeColor = EntityState.themeColorMap[key];
 
                   _colorKey = key;
                 });
