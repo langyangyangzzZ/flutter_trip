@@ -39,7 +39,8 @@ CSDN地址为:[https://blog.csdn.net/weixin_44819566](https://blog.csdn.net/weix
 2020/12/28:<br>
 [Flutter 全局控制器之Provider](https://blog.csdn.net/weixin_44819566/article/details/111866401)
 
-
+2020/12/29:<br>
+[Flutter 底部浮动按钮(模仿咸鱼APP底部)](https://blog.csdn.net/weixin_44819566/article/details/111916700)
 
 
 
