@@ -17,6 +17,7 @@ import 'package:flutter_trip/tests/show_popup_text.dart';
 import 'package:flutter_trip/tests/slider_text.dart';
 import 'file:///D:/FlutterProject/flutter_trip/lib/logins/snowflake_landing_widget.dart';
 import 'package:flutter_trip/tests/snowflake_test.dart';
+import 'package:flutter_trip/tests/float_button_text.dart';
 import 'package:flutter_trip/tests/video_offical_text.dart';
 
 class NetworkRequestTest extends StatefulWidget {
@@ -117,6 +118,8 @@ class _NetworkRequestTestState extends State<NetworkRequestTest> {
           initPage("弹出Popup",ShowPopupWidget()),
 
           initPage("CupertinoPicker",CupertinoPickerWidget()),
+
+          initPage("切换栏", FloatButtonWidget()),
         ],
       ),
     );
