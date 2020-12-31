@@ -45,6 +45,7 @@ dependencies:
   flutter_echart: ^1.0.0 #饼状图   https://pub.flutter-io.cn/packages/flutter_echart
   provider: ^4.3.2+3 #全局状态管理  https://pub.dev/packages/provider/install
   sqflite: ^1.3.2+1 #数据库  https://pub.dev/packages/sqflite/install
+  path_provider: ^0.5.0 #文件路径 https://pub.dev/packages/path_provider/install
 
 dev_dependencies:
   flutter_test:

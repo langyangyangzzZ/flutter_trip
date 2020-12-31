@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 /*
  * @ClassName entaty_state
@@ -29,7 +30,10 @@ class EntityState {
 
   // ----------------Hero ---------------------
   //Hero动画 ImageHead 跳转 Login
-  static final String heroHeadImageToLogin = "hero_head_image_to_login";
+  static final String heroHeadImageToLogin = "heroHeadImageToLogin";
+
+  //Hero动画 video放大功能
+  static final String heroVideoToFullScreen = "heroVideoToFullScreen";
 
 
   // ---------------Color -------------------
@@ -78,5 +82,24 @@ class EntityState {
   //随机视频播放
   static String getRandomVideo() {
     return videoList[random.nextInt(videoList.length )];
+  }
+
+  //横屏
+  static void setHorizontal(){
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
+  }
+
+  //竖屏
+  static void setVertical(){
+    // 强制竖屏
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  }
+
+  //修改顶部状态栏颜色
+  static void setStatusBarColor(Color color){
+    SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(statusBarColor:color);
+    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   }
 }

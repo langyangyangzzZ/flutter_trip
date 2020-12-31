@@ -10,11 +10,6 @@ import 'package:flutter_trip/util/sp_util.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  /*
-      改变状态栏颜色为透明
-      SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(statusBarColor:Colors.transparent);
-      SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
-   */
   runApp(
     //有多个状态管理就使用 MultiProvider，单个的使用 Provider.value 就行了
     MultiProvider(

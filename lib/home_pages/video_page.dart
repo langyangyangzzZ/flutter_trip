@@ -117,7 +117,7 @@ class _VideoPageState extends State<VideoPage> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 25,left: 20,right: 20),
+            padding: EdgeInsets.only(top: 25, left: 20, right: 20),
             child: VideoItemPageWidget(
               url: _listVideo[_random.nextInt(_listVideo.length)],
               isScroll: isScroll,

@@ -1,9 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'file:///D:/FlutterProject/flutter_trip/lib/logins/video_page_widget.dart';
+import 'package:flutter_trip/logins/video_page_widget.dart';
+import 'package:flutter_trip/util/entity_state.dart';
 import 'package:flutter_trip/util/log_util.dart';
-import 'package:flutter_trip/util/toast.dart';
+import 'package:flutter_trip/util/navigator_util.dart';
+import 'package:flutter_trip/video_page_widget/full_screen_widget.dart';
 import 'package:video_player/video_player.dart';
 
 /*
@@ -60,7 +62,6 @@ class _VideoItemPageWidgetState extends State<VideoItemPageWidget>
         LogUtil.Log(tagging: "ischeck", title: '$isCheck');
         setState(() {});
       }
-
 
       setState(() {
         //使进度条跟随视频的变化而变化  当前进度 = 当前播放视频 / 总视频长度
@@ -132,9 +133,9 @@ class _VideoItemPageWidgetState extends State<VideoItemPageWidget>
           child: Container(
             color: Colors.grey.withOpacity(0.5),
             child: Center(
-              child: Text(
-                "开始",
-                style: TextStyle(fontSize: 20, color: Colors.white),
+              child: Icon(
+                _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+                color: Colors.white,
               ),
             ),
           ),
@@ -187,6 +188,9 @@ class _VideoItemPageWidgetState extends State<VideoItemPageWidget>
           buildTextString(_controller.value.duration),
           style: TextStyle(fontSize: 14, color: Colors.white),
         ),
+
+        /// 放大按钮
+        initFullScreen()
       ],
     );
   }
@@ -198,10 +202,10 @@ class _VideoItemPageWidgetState extends State<VideoItemPageWidget>
     int inMinutes = duration?.inMinutes;
 
     String time = "";
-    try{
+    try {
       time = "$inMinutes.${inSeconds % 60}";
-    }catch(e){
-      LogUtil.Log(tagging: "catchLogUtil",title: e.toString());
+    } catch (e) {
+      LogUtil.Log(tagging: "catchLogUtil", title: e.toString());
     }
     return time;
   }
@@ -224,7 +228,7 @@ class _VideoItemPageWidgetState extends State<VideoItemPageWidget>
 
         ///默认为0.0。必须小于或等于[最大值]
         ///如果[max]等于[min]，则滑块被禁用。
-        min:  0,
+        min: 0,
 
         ///默认为1.0。必须大于或等于[min]。
         ///如果[max]等于[min]，则滑块被禁用。
@@ -242,14 +246,30 @@ class _VideoItemPageWidgetState extends State<VideoItemPageWidget>
           });
         },
         //滑动开始回调
-        onChangeStart: (double value){
+        onChangeStart: (double value) {
           // Toast.toast(context,msg: "滑动开始$value");
         },
         //滑动结束回调
-        onChangeEnd: (double value){
+        onChangeEnd: (double value) {
           // Toast.toast(context,msg: "滑动结束$value");
         },
       ),
+    );
+  }
+
+  //放大按钮
+  Widget initFullScreen() {
+    return GestureDetector(
+      child: Icon(
+        Icons.fullscreen,
+        color: Colors.white,
+      ),
+      onTap: () {
+        NavigatorUtil.pushPage(
+            context: context,
+            widget:
+                FullScreenWidget(url: widget.url, videoPageEnum: widget.type));
+      },
     );
   }
 }
