@@ -7,7 +7,6 @@ CSDN地址为:[https://blog.csdn.net/weixin_44819566](https://blog.csdn.net/weix
 
 公众号:码上变有钱
 
-微信号:ohhzzZ77
 
 下面是我的公众号,平时会发一些**andorid**和 **flutter** 的小知识等,主要用来记录工作开发中的一些小知识,**有喜欢的朋友可以扫描二维码咋们互相进步~**
 
@@ -48,6 +47,12 @@ CSDN地址为:[https://blog.csdn.net/weixin_44819566](https://blog.csdn.net/weix
 2020/12/31:<br>
 [你真的会写Hellow Word吗?](https://blog.csdn.net/weixin_44819566/article/details/112002792)<br><br>
 [Flutter ListView播放视频列表(三)](https://blog.csdn.net/weixin_44819566/article/details/112010308)
+
+首先祝大家新年快乐,在最后的一个月中我将计划深度学习一下[设计模式](https://github.com/langyangyangzzZ/newDesignPattern/blob/master/README.md)
+
+有想深度学习设计模式的朋友可以过来瞅一眼哦~
+
+
 
 
 
